@@ -1,0 +1,912 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gabriel Magat Jr. — Full-Stack Developer &amp; CS Student</title>
+  <meta name="description" content="Portfolio of Gabriel B. Magat Jr., a Computer Science student at Holy Angel University who builds full-stack web apps with React, Node.js, and SQL, and deploys them on Linux servers.">
+  <meta name="author" content="Gabriel B. Magat Jr.">
+  <meta name="theme-color" content="#e8e5d5">
+  <link rel="canonical" href="https://gbmagat.github.io/PORTFOLIO/">
+
+  <!-- Link previews (LinkedIn, Messenger, X, etc.) -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Gabriel Magat Jr.">
+  <meta property="og:title" content="Gabriel Magat Jr. — Full-Stack Developer &amp; CS Student">
+  <meta property="og:description" content="Projects, experience, and contact details for Gabriel B. Magat Jr. — full-stack web development and cloud deployment.">
+  <meta property="og:url" content="https://gbmagat.github.io/PORTFOLIO/">
+  <meta property="og:image" content="https://gbmagat.github.io/PORTFOLIO/assets/img/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Gabriel Magat Jr. — a cream browser window with a pixel dinosaur and cacti.">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..800&amp;family=JetBrains+Mono:wght@400..700&amp;display=swap">
+  <link rel="stylesheet" href="assets/css/main.css">
+
+  <!-- Apply the saved (or system) theme before the page paints -->
+  <script>
+    (function () {
+      var t = null;
+      try { t = localStorage.getItem('theme'); } catch (e) {}
+      if (t !== 'day' && t !== 'night') {
+        t = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'night' : 'day';
+      }
+      document.documentElement.setAttribute('data-theme', t);
+      document.documentElement.classList.add('js');
+    })();
+  </script>
+  <script src="assets/js/main.js" defer></script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Gabriel B. Magat Jr.",
+    "alternateName": "Gabriel Magat Jr.",
+    "url": "https://gbmagat.github.io/PORTFOLIO/",
+    "email": "mailto:gabrielmagatjr.cs@gmail.com",
+    "jobTitle": "Full-Stack Web Developer",
+    "description": "Computer Science student building full-stack web applications and deploying them on Linux servers.",
+    "address": { "@type": "PostalAddress", "addressRegion": "Pampanga", "addressCountry": "PH" },
+    "affiliation": { "@type": "CollegeOrUniversity", "name": "Holy Angel University" },
+    "knowsAbout": ["Full-stack web development", "React", "Node.js", "Express", "SQL databases", "Linux server deployment", "Cloud computing"],
+    "sameAs": ["https://github.com/gbmagat", "https://www.linkedin.com/in/gabriel-magat-jr/"]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ============ Icon sprite (pixel icons on a 16×16 grid) ============ -->
+  <svg class="sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+    <symbol id="i-sun" viewBox="0 0 16 16"><path d="M6 5h4v1h1v4h-1v1H6v-1H5V6h1Z M7 1h2v2H7Z M7 13h2v2H7Z M1 7h2v2H1Z M13 7h2v2h-2Z M3 3h2v2H3Z M11 3h2v2h-2Z M3 11h2v2H3Z M11 11h2v2h-2Z"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 16 16"><path d="M5 1h5v1H5Z M3 2h5v1H3Z M2 3h5v1H2Z M1 4h5v2H1Z M0 6h6v3H0Z M0 9h7v1H0Z M1 10h7v1H1Z M13 10h2v1h-2Z M1 11h14v1H1Z M2 12h12v1H2Z M3 13h10v1H3Z M5 14h6v1H5Z"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 16 16"><path d="M2 3h12v2H2Z M2 7h12v2H2Z M2 11h12v2H2Z"/></symbol>
+    <symbol id="i-close" viewBox="0 0 16 16"><path d="M3 3h2v2H3Z M5 5h2v2H5Z M7 7h2v2H7Z M9 9h2v2H9Z M11 11h2v2h-2Z M11 3h2v2h-2Z M9 5h2v2H9Z M5 9h2v2H5Z M3 11h2v2H3Z"/></symbol>
+    <symbol id="i-arrow-ne" viewBox="0 0 16 16"><path d="M6 3h7v2H6Z M11 5h2v5h-2Z M9 5h2v2H9Z M7 7h2v2H7Z M5 9h2v2H5Z M3 11h2v2H3Z"/></symbol>
+    <symbol id="i-arrow-right" viewBox="0 0 16 16"><path d="M2 7h10v2H2Z M8 3h2v2H8Z M10 5h2v2h-2Z M12 7h2v2h-2Z M10 9h2v2h-2Z M8 11h2v2H8Z"/></symbol>
+    <symbol id="i-arrow-down" viewBox="0 0 16 16"><path d="M7 2h2v10H7Z M3 8h2v2H3Z M5 10h2v2H5Z M7 12h2v2H7Z M9 10h2v2H9Z M11 8h2v2h-2Z"/></symbol>
+    <symbol id="i-arrow-up" viewBox="0 0 16 16"><path d="M7 4h2v10H7Z M3 6h2v2H3Z M5 4h2v2H5Z M7 2h2v2H7Z M9 4h2v2H9Z M11 6h2v2h-2Z"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M5 2h6v1H5Z M4 3h1v4H4Z M11 3h1v4h-1Z M3 7h10v7H3Z M7 9h2v3H7Z"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M5 1h9v9H5Z M6 2h7v7H6Z M2 5h2v1H3v8h8v-1h1v2H2Z"/></symbol>
+    <symbol id="i-check" viewBox="0 0 16 16"><path d="M2 8h2v2H2Z M4 10h2v2H4Z M6 8h2v2H6Z M8 6h2v2H8Z M10 4h2v2h-2Z M12 2h2v2h-2Z"/></symbol>
+    <symbol id="i-file" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M3 1h7v1h1v1h1v1h1v11H3Z M4 2v12h8V5H9V2Z M5 7h6v1H5Z M5 9h6v1H5Z M5 11h4v1H5Z"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M6 1h4v1h1v1h1v4h-1v2h-1v2H9v2H7v-2H6V9H5V7H4V3h1V2h1Z M7 4h2v2H7Z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1 3h14v10H1Z M2 4h12v8H2Z M2 4h1v1H2Z M3 5h1v1H3Z M4 6h1v1H4Z M5 7h1v1H5Z M6 8h1v1H6Z M7 9h2v1H7Z M9 8h1v1H9Z M10 7h1v1h-1Z M11 6h1v1h-1Z M12 5h1v1h-1Z M13 4h1v1h-1Z"/></symbol>
+    <symbol id="i-monitor" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1 2h14v10H1Z M2 3h12v8H2Z M4 5h1v1H4Z M5 6h1v1H5Z M4 7h1v1H4Z M7 7h3v1H7Z M7 12h2v2H7Z M4 14h8v1H4Z"/></symbol>
+    <symbol id="i-database" viewBox="0 0 16 16"><path d="M4 1h8v1H4Z M2 2h2v1H2Z M12 2h2v1h-2Z M1 3h1v10H1Z M14 3h1v10h-1Z M2 4h2v1H2Z M12 4h2v1h-2Z M4 5h8v1H4Z M2 8h2v1H2Z M12 8h2v1h-2Z M4 9h8v1H4Z M2 13h2v1H2Z M12 13h2v1h-2Z M4 14h8v1H4Z"/></symbol>
+    <symbol id="i-server" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1 2h14v5H1Z M2 3h12v3H2Z M3 4h2v1H3Z M6 4h1v1H6Z M10 4h3v1h-3Z M1 9h14v5H1Z M2 10h12v3H2Z M3 11h2v1H3Z M6 11h1v1H6Z M10 11h3v1h-3Z M7 7h2v2H7Z"/></symbol>
+    <symbol id="i-checkbox" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1 1h14v14H1Z M2 2h12v12H2Z M4 7h2v2H4Z M6 9h2v2H6Z M8 7h2v2H8Z M10 5h2v2h-2Z"/></symbol>
+    <symbol id="i-graph" viewBox="0 0 16 16"><path d="M1 1h4v4H1Z M11 3h4v4h-4Z M3 11h4v4H3Z M5 2h3v1H5Z M8 3h3v1H8Z M2 5h1v3H2Z M3 8h1v3H3Z M7 12h2v1H7Z M9 11h1v1H9Z M10 10h1v1h-1Z M11 9h1v1h-1Z M12 7h1v2h-1Z"/></symbol>
+    <symbol id="i-cloud" viewBox="0 0 16 16"><path d="M4 5h6v1h1v2h3v1h1v3H1V9h1V8h2Z"/></symbol>
+    <symbol id="i-music" viewBox="0 0 16 16"><path d="M6 2h8v2H6Z M6 4h1v7H6Z M13 4h1v6h-1Z M3 10h4v3H3Z M10 9h4v3h-4Z"/></symbol>
+    <symbol id="i-cap" viewBox="0 0 16 16"><path d="M7 2h2v1H7Z M5 3h6v1H5Z M3 4h10v1H3Z M1 5h14v1H1Z M3 6h10v1H3Z M5 7h6v1H5Z M7 8h2v1H7Z M4 7h1v3h6V7h1v4H4Z M14 5h1v5h-1Z"/></symbol>
+    <symbol id="i-award" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M5 1h6v1h1v1h1v5h-1v1h-1v1H5V9H4V8H3V3h1V2h1Z M7 4h2v1h1v2H9v1H7V7H6V5h1Z M4 10h3v5H6v-1H5v1H4Z M9 10h3v5h-1v-1h-1v1H9Z"/></symbol>
+    <symbol id="i-github" viewBox="0 0 16 16"><path shape-rendering="geometricPrecision" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></symbol>
+    <symbol id="i-linkedin" viewBox="0 0 24 24"><path shape-rendering="geometricPrecision" d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></symbol>
+    <!-- Pixel dinosaur from the GitHub profile artwork (80×84 grid) -->
+    <symbol id="dino" viewBox="0 0 80 84"><path fill-rule="evenodd" d="M44 0h32v4h4v20H56v8h16v4H56v8h12v4H56v8h-8v8h-8v8H24v-4H12v-8H4V48H0V28h4v12h4v8h8v-4h8v-8h8v-8h8V4h4Z M48 5h5v5h-5Z"/><path d="M24 64h8v16h8v4H24Zm16 0h8v8h8v4H44v-4h-4Z"/></symbol>
+  </svg>
+
+  <!-- ============ Header ============ -->
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand" href="#profile" aria-label="Gabriel Magat Jr. — back to top">
+        <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span class="brand__text"><b>gbmagat</b> / <span data-section-label>profile</span></span>
+      </a>
+
+      <nav class="nav" id="site-nav" aria-label="Primary">
+        <ul>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#stack">Stack</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li class="nav__resume"><a href="resume.html">Résumé</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button class="icon-btn theme-toggle" type="button" data-theme-toggle aria-label="Switch to night theme">
+          <svg class="icon i-moon" aria-hidden="true"><use href="#i-moon"/></svg>
+          <svg class="icon i-sun" aria-hidden="true"><use href="#i-sun"/></svg>
+        </button>
+        <a class="btn btn--butter btn--sm header-resume" href="resume.html">Résumé</a>
+        <button class="icon-btn nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+          <svg class="icon i-menu" aria-hidden="true"><use href="#i-menu"/></svg>
+          <svg class="icon i-close" aria-hidden="true"><use href="#i-close"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ============ Hero ============ -->
+    <section class="hero" id="profile" data-label="profile" aria-labelledby="hero-name">
+      <div class="container">
+        <div class="window hero__window">
+          <div class="window__bar">
+            <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="window__title">gbmagat / profile</span>
+            <span class="status-pill"><span class="status-dot" aria-hidden="true"></span>Online</span>
+          </div>
+
+          <div class="hero__body">
+            <div class="hero__text">
+              <p class="hero__hello">Hello, I'm</p>
+              <h1 class="hero__name" id="hero-name">Gabriel Magat Jr.</h1>
+              <p class="hero__role">Computer Science student <span aria-hidden="true">·</span> Full-stack development <span aria-hidden="true">·</span> Cloud computing</p>
+              <p class="hero__lead">
+                I build web applications end to end — React interfaces, Node.js APIs, and SQL databases — and deploy them on Linux servers with nginx and HTTPS. My thesis, <strong>JobFinder</strong>, ranks jobs in Angeles City by real road distance.
+              </p>
+              <div class="hero__actions">
+                <a class="btn btn--primary" href="#projects">View projects <svg class="icon" aria-hidden="true"><use href="#i-arrow-down"/></svg></a>
+                <a class="btn btn--butter" href="resume.html">Résumé <svg class="icon" aria-hidden="true"><use href="#i-file"/></svg></a>
+                <ul class="socials" aria-label="Profiles">
+                  <li><a class="icon-btn" href="https://github.com/gbmagat" target="_blank" rel="noopener" aria-label="GitHub (opens in a new tab)"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg></a></li>
+                  <li><a class="icon-btn" href="https://www.linkedin.com/in/gabriel-magat-jr/" target="_blank" rel="noopener" aria-label="LinkedIn (opens in a new tab)"><svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg></a></li>
+                  <li><a class="icon-btn" href="mailto:gabrielmagatjr.cs@gmail.com" aria-label="Email gabrielmagatjr.cs@gmail.com"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg></a></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="hero__scene">
+              <button class="scene" type="button" data-dino aria-label="Say hi to the dinosaur">
+                <svg class="scene__svg" viewBox="0 0 480 250" aria-hidden="true" focusable="false">
+                  <g class="scene__night">
+                    <use class="scene__moon" href="#i-moon" x="424" y="12" width="30" height="30"/>
+                    <g class="scene__stars">
+                      <rect x="104" y="18" width="3" height="3"/>
+                      <rect x="252" y="16" width="3" height="3"/>
+                      <rect x="300" y="78" width="3" height="3"/>
+                      <rect x="462" y="86" width="3" height="3"/>
+                      <rect x="128" y="96" width="3" height="3"/>
+                      <rect x="236" y="118" width="3" height="3"/>
+                      <rect x="16" y="78" width="3" height="3"/>
+                      <rect x="400" y="120" width="3" height="3"/>
+                    </g>
+                  </g>
+                  <g class="scene__clouds" fill="none" stroke-width="2">
+                    <path class="cloud cloud--a" d="M150 64h18v-12h36v12h24v12h-78Z"/>
+                    <path class="cloud cloud--b" d="M330 40h18v-12h30v12h18v9h-66Z"/>
+                    <path class="cloud cloud--c" d="M20 36h12v-8h24v8h16v8H20Z"/>
+                  </g>
+                  <g class="scene__cacti" shape-rendering="crispEdges" transform="translate(-75 101.5) scale(1.5)">
+                    <path d="M264 37h12v62h-12Zm-14 18h8v20h6v8h-12v-4h-2Zm32-6h8v30h-4v4h-10v-8h6Z"/>
+                    <path d="M324 62h9v37h-9Zm-10 8h6v12h4v6h-8v-3h-2Zm25-5h6v20h-3v3h-9v-6h6Z"/>
+                  </g>
+                  <g class="dino">
+                    <g transform="translate(60 124) scale(1.5)" shape-rendering="crispEdges">
+                      <path class="dino__body" d="M44 0h32v4h4v20H56v8h16v4H56v8h12v4H56v8h-8v8h-8v8H24v-4H12v-8H4V48H0V28h4v12h4v8h8v-4h8v-8h8v-8h8V4h4Z"/>
+                      <rect class="dino__eye" x="48" y="5" width="5" height="5"/>
+                      <path class="dino__body" d="M24 64h8v16h8v4H24Zm16 0h8v8h8v4H44v-4h-4Z"/>
+                    </g>
+                  </g>
+                </svg>
+                <span class="bubble" data-bubble aria-live="polite"></span>
+              </button>
+            </div>
+
+            <div class="ground hero__ground" aria-hidden="true"></div>
+          </div>
+
+          <div class="hero__status">
+            <span>Open to opportunities</span>
+            <span class="hero__where"><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg> Pampanga, PH · <time data-local-time>PHT</time></span>
+          </div>
+        </div>
+
+        <ul class="readouts" aria-label="Quick facts">
+          <li class="readout">
+            <span class="readout__value">04</span>
+            <span class="readout__label">Live projects on the web</span>
+          </li>
+          <li class="readout">
+            <span class="readout__value">8,282</span>
+            <span class="readout__label">Road-graph nodes routed in my thesis</span>
+          </li>
+          <li class="readout">
+            <span class="readout__value">2025</span>
+            <span class="readout__label">Freelancing since — React sites for SMEs</span>
+          </li>
+          <li class="readout">
+            <span class="readout__value">2027</span>
+            <span class="readout__label">Expected graduation, BS Computer Science</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ Projects ============ -->
+    <section class="section" id="projects" data-label="projects" aria-labelledby="projects-title">
+      <div class="container">
+        <header class="section-head" data-reveal>
+          <p class="eyebrow"><span class="eyebrow__num">01</span> gbmagat / projects</p>
+          <h2 id="projects-title">Selected work</h2>
+          <p>Things I've designed, built, and shipped — each one live on the web, with its source code on GitHub.</p>
+        </header>
+
+        <div class="projects">
+          <!-- JobFinder -->
+          <article class="project project--featured" id="jobfinder" data-reveal>
+            <button class="project__media browser" type="button" data-open="case-jobfinder" aria-label="Open the JobFinder case study">
+              <span class="browser__bar" aria-hidden="true">
+                <span class="dots"><i></i><i></i><i></i></span>
+                <span class="browser__url"><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg>jobfinderangeles.site</span>
+              </span>
+              <img class="browser__shot" src="assets/img/projects/jobfinder-search-1280.webp" srcset="assets/img/projects/jobfinder-search-640.webp 640w, assets/img/projects/jobfinder-search-1280.webp 1280w" sizes="(min-width: 960px) 620px, 100vw" width="1280" height="800" loading="lazy" decoding="async" alt="JobFinder's search page: job listings in Angeles City beside an OpenStreetMap map.">
+            </button>
+            <div class="project__body">
+              <p class="project__kicker"><span class="tag">Featured</span> Undergraduate thesis · 2026</p>
+              <h3 class="project__title">JobFinder</h3>
+              <p class="project__subtitle">Job matching for Angeles City, ranked by real road distance.</p>
+              <p class="project__desc">A full-stack platform for job seekers, employers, and PESO administrators that pairs ontology-based skill matching with shortest-path routing on the city's road network.</p>
+              <ul class="points">
+                <li>Dijkstra's algorithm written from scratch with a custom binary min-heap over an 8,282-node OpenStreetMap road graph</li>
+                <li>Zod validation, Helmet security headers, rate limiting, and scrypt password hashing</li>
+                <li>Runs on a Linux VPS with nginx, systemd, and auto-renewing Let's Encrypt HTTPS</li>
+              </ul>
+              <ul class="badges" aria-label="Built with">
+                <li class="badge b-react">React</li>
+                <li class="badge b-typescript">TypeScript</li>
+                <li class="badge b-node">Node.js</li>
+                <li class="badge b-express">Express</li>
+                <li class="badge b-sqlite">SQLite</li>
+                <li class="badge b-leaflet">Leaflet</li>
+              </ul>
+              <div class="project__links">
+                <a class="link-btn" href="https://jobfinderangeles.site/" target="_blank" rel="noopener">Live site <svg class="icon" aria-hidden="true"><use href="#i-arrow-ne"/></svg></a>
+                <a class="link-btn" href="https://github.com/gbmagat/JOBFINDER-THESIS" target="_blank" rel="noopener">Source <svg class="icon" aria-hidden="true"><use href="#i-arrow-ne"/></svg></a>
+                <button class="link-btn link-btn--strong" type="button" data-open="case-jobfinder">Case study <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Our Places -->
+          <article class="project" id="our-places" data-reveal>
+            <button class="project__media browser" type="button" data-open="case-ourplaces" aria-label="Open the Our Places case study">
+              <span class="browser__bar" aria-hidden="true">
+                <span class="dots"><i></i><i></i><i></i></span>
+                <span class="browser__url"><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg>ourplaces.igst.site</span>
+              </span>
+              <img class="browser__shot" src="assets/img/projects/ourplaces-feed-1280.webp" srcset="assets/img/projects/ourplaces-feed-640.webp 640w, assets/img/projects/ourplaces-feed-1280.webp 1280w" sizes="(min-width: 960px) 620px, 100vw" width="1280" height="800" loading="lazy" decoding="async" alt="Our Places feed page with shared stories, filters, and the next planned place.">
+            </button>
+            <div class="project__body">
+              <p class="project__kicker">Course final project · 2026</p>
+              <h3 class="project__title">Our Places</h3>
+              <p class="project__subtitle">A private journal for two — places, plans, and blind reviews.</p>
+              <p class="project__desc">A shared space for two people to discover places, plan visits, and log experiences with photos. Each person's review stays hidden until both have submitted, then the combined score is revealed.</p>
+              <ul class="points">
+                <li>Shortest road routes with Dijkstra and a binary-heap priority queue over OpenStreetMap roads, cached per map tile</li>
+                <li>Nearest-first search with the Haversine formula, plus email reminders for planned visits</li>
+                <li>Blind reviews enforced in the server query; custom sign-in with scrypt hashes and database sessions</li>
+              </ul>
+              <ul class="badges" aria-label="Built with">
+                <li class="badge b-nextjs">Next.js</li>
+                <li class="badge b-react">React</li>
+                <li class="badge b-typescript">TypeScript</li>
+                <li class="badge b-postgresql">PostgreSQL</li>
+                <li class="badge b-leaflet">Leaflet</li>
+                <li class="badge b-zod">Zod</li>
+              </ul>
+              <div class="project__links">
+                <a class="link-btn" href="https://ourplaces.igst.site/" target="_blank" rel="noopener">Live app (sign-in) <svg class="icon" aria-hidden="true"><use href="#i-arrow-ne"/></svg></a>
+                <a class="link-btn" href="https://github.com/gbmagat/HAU-6APSI-FINAL-PROEJCT_MAGAT" target="_blank" rel="noopener">Source <svg class="icon" aria-hidden="true"><use href="#i-arrow-ne"/></svg></a>
+                <button class="link-btn link-btn--strong" type="button" data-open="case-ourplaces">Case study <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></button>
+              </div>
+            </div>
+          </article>
+
+          <!-- It's a Match -->
+          <article class="project" id="its-a-match" data-reveal>
+            <button class="project__media browser" type="button" data-open="case-itsamatch" aria-label="Open the It's a Match case study">
+              <span class="browser__bar" aria-hidden="true">
+                <span class="dots"><i></i><i></i><i></i></span>
+                <span class="browser__url"><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg>itsamatch.online</span>
+              </span>
+              <img class="browser__shot" src="assets/img/projects/itsamatch-home-1280.webp" srcset="assets/img/projects/itsamatch-home-640.webp 640w, assets/img/projects/itsamatch-home-1280.webp 1280w" sizes="(min-width: 960px) 620px, 100vw" width="1280" height="800" loading="lazy" decoding="async" alt="It's a Match landing page with the headline “it's a match! you're my missing puzzle piece”.">
+            </button>
+            <div class="project__body">
+              <p class="project__kicker">Research simulation platform · Full-stack developer</p>
+              <h3 class="project__title">It's a Match</h3>
+              <p class="project__subtitle">A dating-app simulation for a study on language and text styles.</p>
+              <p class="project__desc">Built for an academic research team: participants chat through scripted Filipino and English conversations, while researchers follow progress from a private dashboard.</p>
+              <ul class="points">
+                <li>Multiple-choice conversations in formal, informal, and colloquial styles, with resumable progress</li>
+                <li>Password-protected researcher dashboard with completion statistics and CSV export</li>
+                <li>Express API with MySQL storage; Playwright flow checks on desktop and mobile</li>
+              </ul>
+              <ul class="badges" aria-label="Built with">
+                <li class="badge b-react">React</li>
+                <li class="badge b-vite">Vite</li>
+                <li class="badge b-node">Node.js</li>
+                <li class="badge b-express">Express</li>
+                <li class="badge b-mysql">MySQL</li>
+                <li class="badge b-playwright">Playwright</li>
+              </ul>
+              <div class="project__links">
+                <a class="link-btn" href="https://itsamatch.online/" target="_blank" rel="noopener">Live site <svg class="icon" aria-hidden="true"><use href="#i-arrow-ne"/></svg></a>
+                <a class="link-btn" href="https://github.com/gbmagat/it-s-a-match" target="_blank" rel="noopener">Source <svg class="icon" aria-hidden="true"><use href="#i-arrow-ne"/></svg></a>
+                <button class="link-btn link-btn--strong" type="button" data-open="case-itsamatch">Case study <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></button>
+              </div>
+            </div>
+          </article>
+
+          <!-- MOPAC -->
+          <article class="project" id="mopac" data-reveal>
+            <button class="project__media browser" type="button" data-open="case-mopac" aria-label="Open the MOPAC case study">
+              <span class="browser__bar" aria-hidden="true">
+                <span class="dots"><i></i><i></i><i></i></span>
+                <span class="browser__url"><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg>gbmagat.github.io/MOPAC</span>
+              </span>
+              <img class="browser__shot" src="assets/img/projects/mopac-exhibitions-1280.webp" srcset="assets/img/projects/mopac-exhibitions-640.webp 640w, assets/img/projects/mopac-exhibitions-1280.webp 1280w" sizes="(min-width: 960px) 620px, 100vw" width="1280" height="800" loading="lazy" decoding="async" alt="MOPAC Exhibitions page showing a gallery hallway lined with framed paintings.">
+            </button>
+            <div class="project__body">
+              <p class="project__kicker">Academic final project · 2024</p>
+              <h3 class="project__title">MOPAC</h3>
+              <p class="project__subtitle">Museum of Philippine Arts and Culture website.</p>
+              <p class="project__desc">My first responsive website: a multi-page site for the ADF Museum of Philippine Arts and Culture in Pampanga, built on my own from information architecture through visual design and code.</p>
+              <ul class="points">
+                <li>Exhibition pages for the Mabini Art Movement, the 13 National Artists, and Ifugao artifacts</li>
+                <li>Video introduction, artwork search with jQuery, and visitor info with an embedded map</li>
+                <li>Responsive layouts with a mobile menu, hosted on GitHub Pages</li>
+              </ul>
+              <ul class="badges" aria-label="Built with">
+                <li class="badge b-html">HTML</li>
+                <li class="badge b-css">CSS</li>
+                <li class="badge b-javascript">JavaScript</li>
+                <li class="badge b-jquery">jQuery</li>
+              </ul>
+              <div class="project__links">
+                <a class="link-btn" href="https://gbmagat.github.io/MOPAC/" target="_blank" rel="noopener">Live site <svg class="icon" aria-hidden="true"><use href="#i-arrow-ne"/></svg></a>
+                <a class="link-btn" href="https://github.com/gbmagat/MOPAC" target="_blank" rel="noopener">Source <svg class="icon" aria-hidden="true"><use href="#i-arrow-ne"/></svg></a>
+                <button class="link-btn link-btn--strong" type="button" data-open="case-mopac">Case study <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></button>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Smaller projects -->
+        <div class="window archive" data-reveal>
+          <div class="window__bar">
+            <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <h3 class="window__title">gbmagat / more-projects</h3>
+          </div>
+          <ul class="archive__list">
+            <li class="archive__row">
+              <span class="archive__year">2026</span>
+              <span class="archive__name"><b>This portfolio</b> Hand-built with no framework, styled after my GitHub profile.</span>
+              <span class="archive__stack">HTML · CSS · JavaScript</span>
+              <a class="archive__link" href="https://github.com/gbmagat/PORTFOLIO" target="_blank" rel="noopener" aria-label="This portfolio on GitHub (opens in a new tab)">GitHub <svg class="icon" aria-hidden="true"><use href="#i-arrow-ne"/></svg></a>
+            </li>
+            <li class="archive__row">
+              <span class="archive__year">2025</span>
+              <span class="archive__name"><b>Payroll System (CLI)</b> Command-line payroll app with login, role-based admin and employee consoles, and a DAO layer over MySQL.</span>
+              <span class="archive__stack">PHP · MySQL · PDO</span>
+              <a class="archive__link" href="https://github.com/gbmagat/DIPROLANG" target="_blank" rel="noopener" aria-label="Payroll System on GitHub (opens in a new tab)">GitHub <svg class="icon" aria-hidden="true"><use href="#i-arrow-ne"/></svg></a>
+            </li>
+            <li class="archive__row">
+              <span class="archive__year">2025</span>
+              <span class="archive__name"><b>Celestial Bodies Database</b> Relational database of galaxies, stars, planets, moons, and comets.</span>
+              <span class="archive__stack">PostgreSQL · SQL</span>
+              <a class="archive__link" href="https://github.com/gbmagat/universe.sql" target="_blank" rel="noopener" aria-label="Celestial Bodies Database on GitHub (opens in a new tab)">GitHub <svg class="icon" aria-hidden="true"><use href="#i-arrow-ne"/></svg></a>
+            </li>
+          </ul>
+          <a class="archive__more" href="https://github.com/gbmagat?tab=repositories" target="_blank" rel="noopener">See all repositories on GitHub <svg class="icon" aria-hidden="true"><use href="#i-arrow-ne"/></svg></a>
+        </div>
+      </div>
+    </section>
+
+    <div class="container"><div class="ground" aria-hidden="true"></div></div>
+
+    <!-- ============ About ============ -->
+    <section class="section" id="about" data-label="about" aria-labelledby="about-title">
+      <div class="container">
+        <header class="section-head" data-reveal>
+          <p class="eyebrow"><span class="eyebrow__num">02</span> gbmagat / about</p>
+          <h2 id="about-title">About me</h2>
+        </header>
+
+        <div class="about">
+          <aside class="window about__card" data-reveal>
+            <div class="window__bar">
+              <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+              <span class="window__title">gbmagat / avatar</span>
+            </div>
+            <!-- To use a photo instead: replace the <svg> below with
+                 <img src="assets/img/gabriel.webp" alt="Gabriel Magat Jr." width="600" height="600"> -->
+            <figure class="about__avatar">
+              <svg viewBox="0 0 80 84" role="img" aria-label="Pixel dinosaur avatar"><use href="#dino"/></svg>
+            </figure>
+            <dl class="facts">
+              <div><dt>Based in</dt><dd>Pampanga, Philippines</dd></div>
+              <div><dt>Studying</dt><dd>BS Computer Science, Holy Angel University</dd></div>
+              <div><dt>Graduating</dt><dd>2027 (expected)</dd></div>
+              <div><dt>Focus</dt><dd>Full-stack web &amp; cloud deployment</dd></div>
+            </dl>
+          </aside>
+
+          <div class="about__text" data-reveal>
+            <p class="about__intro">I'm a fourth-year Computer Science student who likes connecting the pieces — from a responsive interface and a backend API to a database and a running application on a Linux server.</p>
+            <p>Since 2025 I've worked as a freelance web developer, designing and building responsive React websites for small and medium-sized businesses — from requirements gathering through launch. I also provision Linux servers on AWS and Alibaba Cloud and set up their domains and DNS.</p>
+            <p>I'm working toward a career in cloud computing, with a focus on infrastructure and application deployment. I completed AWS Academy Cloud Foundations and used Amazon EC2 and AWS Lambda in coursework, and I keep building on that through web and Linux server projects.</p>
+            <p>Off the keyboard, I manage social media for the Holy Angel String Ensemble, where I previously served as secretary — designing graphics in Canva and Photoshop and covering performances on site.</p>
+          </div>
+        </div>
+
+        <h3 class="subhead" data-reveal>What I do</h3>
+        <ul class="caps">
+          <li class="cap" data-reveal>
+            <svg class="cap__icon" aria-hidden="true"><use href="#i-monitor"/></svg>
+            <h4>Building web applications</h4>
+            <p>Responsive interfaces, backend APIs, and dashboards with React, Next.js, Node.js, and Express.</p>
+          </li>
+          <li class="cap" data-reveal>
+            <svg class="cap__icon" aria-hidden="true"><use href="#i-database"/></svg>
+            <h4>Working with data</h4>
+            <p>MySQL, PostgreSQL, and SQLite for application records, participant tracking, and reporting.</p>
+          </li>
+          <li class="cap" data-reveal>
+            <svg class="cap__icon" aria-hidden="true"><use href="#i-server"/></svg>
+            <h4>Deploying projects</h4>
+            <p>Linux servers, SSH, nginx, systemd, domain configuration, and HTTPS with Let's Encrypt.</p>
+          </li>
+          <li class="cap" data-reveal>
+            <svg class="cap__icon" aria-hidden="true"><use href="#i-checkbox"/></svg>
+            <h4>Checking user flows</h4>
+            <p>Playwright-based checks for desktop and mobile web experiences.</p>
+          </li>
+          <li class="cap" data-reveal>
+            <svg class="cap__icon" aria-hidden="true"><use href="#i-graph"/></svg>
+            <h4>Applying computer science</h4>
+            <p>Skill matching and shortest-path algorithms, like Dijkstra on real road networks.</p>
+          </li>
+          <li class="cap" data-reveal>
+            <svg class="cap__icon" aria-hidden="true"><use href="#i-cloud"/></svg>
+            <h4>Learning cloud computing</h4>
+            <p>AWS Academy Cloud Foundations, with hands-on Amazon EC2 and AWS Lambda.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="container"><div class="ground" aria-hidden="true"></div></div>
+
+    <!-- ============ Experience ============ -->
+    <section class="section" id="experience" data-label="experience" aria-labelledby="experience-title">
+      <div class="container">
+        <header class="section-head" data-reveal>
+          <p class="eyebrow"><span class="eyebrow__num">03</span> gbmagat / experience</p>
+          <h2 id="experience-title">Experience &amp; education</h2>
+        </header>
+
+        <div class="xp">
+          <div class="xp__work">
+            <h3 class="subhead" data-reveal>Work</h3>
+            <ol class="timeline">
+              <li class="timeline__item is-current" data-reveal>
+                <p class="timeline__date">2025 — Present</p>
+                <h4 class="timeline__role">Freelance Web Developer</h4>
+                <p class="timeline__org">Independent · City of San Fernando, Pampanga</p>
+                <ul class="points">
+                  <li>Design and build responsive React websites for small and medium-sized business clients, from requirements gathering through launch.</li>
+                  <li>Provision Linux VPS instances on AWS and Alibaba Cloud, and configure domains and DNS.</li>
+                </ul>
+                <ul class="badges" aria-label="Tools">
+                  <li class="badge b-react">React</li>
+                  <li class="badge b-linux">Linux</li>
+                  <li class="badge b-aws">AWS</li>
+                  <li class="badge b-alibaba">Alibaba Cloud</li>
+                </ul>
+              </li>
+              <li class="timeline__item is-current" data-reveal>
+                <p class="timeline__date">2026 — Present</p>
+                <h4 class="timeline__role">Social Media Manager</h4>
+                <p class="timeline__org">Holy Angel String Ensemble · Holy Angel University</p>
+                <ul class="points">
+                  <li>Promote performances and recruitment, create graphics in Canva and Adobe Photoshop, and cover events on site.</li>
+                </ul>
+              </li>
+              <li class="timeline__item" data-reveal>
+                <p class="timeline__date">Jun 2025 — Apr 2026</p>
+                <h4 class="timeline__role">Secretary</h4>
+                <p class="timeline__org">Holy Angel String Ensemble · Holy Angel University</p>
+                <ul class="points">
+                  <li>Maintained minutes, records, and schedules; coordinated events and communication with officers and the performance head.</li>
+                </ul>
+              </li>
+            </ol>
+          </div>
+
+          <div class="xp__side">
+            <h3 class="subhead" data-reveal>Education</h3>
+            <article class="window edu" data-reveal>
+              <div class="edu__body">
+                <svg class="edu__icon" aria-hidden="true"><use href="#i-cap"/></svg>
+                <div>
+                  <p class="timeline__date">2023 — 2027 (expected)</p>
+                  <h4 class="timeline__role">BS Computer Science</h4>
+                  <p class="timeline__org">Holy Angel University · Angeles City, Pampanga</p>
+                  <ul class="points">
+                    <li>Dean's Lister, S.Y. 2023–2024</li>
+                    <li>Thesis: JobFinder — ontology-based skill and geographic accessibility matching</li>
+                  </ul>
+                </div>
+              </div>
+            </article>
+
+            <h3 class="subhead" data-reveal>Certifications &amp; training</h3>
+            <ul class="certs">
+              <li class="cert" data-reveal>
+                <svg class="cert__icon" aria-hidden="true"><use href="#i-award"/></svg>
+                <div><b>AWS Academy Graduate — Cloud Foundations</b><span>Amazon Web Services · Training badge</span></div>
+              </li>
+              <li class="cert" data-reveal>
+                <svg class="cert__icon" aria-hidden="true"><use href="#i-award"/></svg>
+                <div><b>Computer Systems Servicing NC II</b><span>TESDA</span></div>
+              </li>
+              <li class="cert" data-reveal>
+                <svg class="cert__icon" aria-hidden="true"><use href="#i-award"/></svg>
+                <div><b>Data Analytics Essentials</b><span>Cisco Networking Academy</span></div>
+              </li>
+              <li class="cert" data-reveal>
+                <svg class="cert__icon" aria-hidden="true"><use href="#i-award"/></svg>
+                <div><b>JavaScript Essentials 1</b><span>Cisco Networking Academy</span></div>
+              </li>
+              <li class="cert" data-reveal>
+                <svg class="cert__icon" aria-hidden="true"><use href="#i-award"/></svg>
+                <div><b>Agents and Workflows · Get Started with Codex · Extend Codex Workflows · AI Foundations</b><span>OpenAI</span></div>
+              </li>
+              <li class="cert" data-reveal>
+                <svg class="cert__icon" aria-hidden="true"><use href="#i-award"/></svg>
+                <div><b>Teaching AI Fluency · Claude 101 · AI Fluency: Framework and Foundations</b><span>Anthropic / Claude Academy</span></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container"><div class="ground" aria-hidden="true"></div></div>
+
+    <!-- ============ Stack ============ -->
+    <section class="section" id="stack" data-label="stack" aria-labelledby="stack-title">
+      <div class="container">
+        <header class="section-head" data-reveal>
+          <p class="eyebrow"><span class="eyebrow__num">04</span> gbmagat / stack</p>
+          <h2 id="stack-title">Tech stack &amp; tools</h2>
+          <p>Technologies I've used in freelance work, academic projects, and coursework.</p>
+        </header>
+
+        <div class="stack">
+          <div class="window stack__group" data-reveal>
+            <div class="window__bar"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><h3 class="window__title">Languages</h3></div>
+            <ul class="badges">
+              <li class="badge b-javascript">JavaScript</li>
+              <li class="badge b-typescript">TypeScript</li>
+              <li class="badge b-python">Python</li>
+              <li class="badge b-dart">Dart</li>
+              <li class="badge b-php">PHP</li>
+              <li class="badge b-sql">SQL</li>
+            </ul>
+          </div>
+          <div class="window stack__group" data-reveal>
+            <div class="window__bar"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><h3 class="window__title">Frontend</h3></div>
+            <ul class="badges">
+              <li class="badge b-html">HTML</li>
+              <li class="badge b-css">CSS</li>
+              <li class="badge b-react">React</li>
+              <li class="badge b-nextjs">Next.js</li>
+              <li class="badge b-tailwind">Tailwind CSS</li>
+            </ul>
+          </div>
+          <div class="window stack__group" data-reveal>
+            <div class="window__bar"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><h3 class="window__title">Backend &amp; databases</h3></div>
+            <ul class="badges">
+              <li class="badge b-node">Node.js</li>
+              <li class="badge b-express">Express</li>
+              <li class="badge b-mysql">MySQL</li>
+              <li class="badge b-postgresql">PostgreSQL</li>
+              <li class="badge b-sqlite">SQLite</li>
+            </ul>
+          </div>
+          <div class="window stack__group stack__group--wide" data-reveal>
+            <div class="window__bar"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><h3 class="window__title">Cloud &amp; deployment</h3></div>
+            <ul class="badges">
+              <li class="badge b-aws">AWS</li>
+              <li class="badge b-ec2">Amazon EC2</li>
+              <li class="badge b-lambda">AWS Lambda</li>
+              <li class="badge b-alibaba">Alibaba Cloud</li>
+              <li class="badge b-gcp">Google Cloud</li>
+              <li class="badge b-docker">Docker</li>
+              <li class="badge b-k8s">Kubernetes</li>
+              <li class="badge b-linux">Linux</li>
+              <li class="badge b-nginx">Nginx</li>
+              <li class="badge b-ssh">SSH</li>
+            </ul>
+          </div>
+          <div class="window stack__group" data-reveal>
+            <div class="window__bar"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><h3 class="window__title">Development &amp; testing</h3></div>
+            <ul class="badges">
+              <li class="badge b-git">Git</li>
+              <li class="badge b-github">GitHub</li>
+              <li class="badge b-vite">Vite</li>
+              <li class="badge b-playwright">Playwright</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Contact ============ -->
+    <section class="section section--contact" id="contact" data-label="contact" aria-labelledby="contact-title">
+      <div class="container">
+        <div class="window contact" data-reveal>
+          <div class="window__bar">
+            <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="window__title">gbmagat / contact</span>
+          </div>
+          <div class="contact__body">
+            <div class="contact__text">
+              <p class="eyebrow"><span class="eyebrow__num">05</span> Contact</p>
+              <h2 id="contact-title">Let's connect.</h2>
+              <p>Have a project, an opportunity, or a question? My inbox is open — I'm always happy to talk about web development, deployment, and cloud computing.</p>
+              <div class="contact__actions">
+                <a class="btn btn--primary" href="mailto:gabrielmagatjr.cs@gmail.com"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg> Email me</a>
+                <button class="btn btn--ghost" type="button" data-copy="gabrielmagatjr.cs@gmail.com"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg> Copy email</button>
+              </div>
+              <p class="contact__email">gabrielmagatjr.cs@gmail.com</p>
+            </div>
+
+            <div class="terminal" data-terminal role="group" aria-label="Contact links">
+              <div class="terminal__bar" aria-hidden="true">
+                <span class="dots"><i></i><i></i><i></i></span>
+                <span>bash — ping</span>
+              </div>
+              <div class="terminal__screen">
+                <p class="t-line" style="--d:0"><span class="t-prompt">$</span> <span class="t-cmd">ping gbmagat</span></p>
+                <p class="t-line t-muted" style="--d:1100">PING gbmagat (Pampanga, PH): 3 routes</p>
+                <p class="t-line" style="--d:1500"><span class="t-key">email   </span> <a href="mailto:gabrielmagatjr.cs@gmail.com">gabrielmagatjr.cs@gmail.com</a> <span class="t-ok">ok</span></p>
+                <p class="t-line" style="--d:1850"><span class="t-key">linkedin</span> <a href="https://www.linkedin.com/in/gabriel-magat-jr/" target="_blank" rel="noopener">in/gabriel-magat-jr</a> <span class="t-ok">ok</span></p>
+                <p class="t-line" style="--d:2200"><span class="t-key">github  </span> <a href="https://github.com/gbmagat" target="_blank" rel="noopener">github.com/gbmagat</a> <span class="t-ok">ok</span></p>
+                <p class="t-line t-muted" style="--d:2600">--- 3 replies, 0% packet loss ---</p>
+                <p class="t-line" style="--d:2900"><span class="t-prompt">$</span> <span class="t-cursor" aria-hidden="true"></span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ Footer ============ -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="window footer-window">
+        <svg class="footer-scene" viewBox="0 0 1200 104" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+          <g class="scene__cacti" shape-rendering="crispEdges">
+            <path d="M198 28h10v51h-10Zm-14 15h8v20h6v8h-12v-4h-2Zm30-8h8v32h-4v4h-10v-8h6Z"/>
+            <path d="M702 48h8v31h-8Zm-11 10h6v10h5v6h-9v-3h-2Zm25-6h6v19h-3v3h-9v-6h6Z"/>
+            <path d="M986 24h12v55h-12Zm-15 17h8v21h7v8h-13v-4h-2Zm34-7h8v32h-4v4h-11v-8h7Z"/>
+          </g>
+          <g class="footer-scene__lines" fill="none" stroke-width="2">
+            <path d="M0 81h290l6 4h34l6-4h169l6-5h13l6 5h272l6 4h31l6-4h216l6-5h12l6 5h115"/>
+            <path d="M62 93h7m59-4h8m102 5h6m63-4h10m61 4h8m81-5h6m75 5h8m73-4h7m64 5h8m75-5h6m79 4h8m72-5h7m73 5h8m51-5h6"/>
+            <path class="cloud cloud--a" d="M384 37h12v-8h24v8h16v7h-52Z"/>
+            <path class="cloud cloud--b" d="M810 29h10v-7h20v7h13v6h-43Z"/>
+          </g>
+        </svg>
+        <div class="window__bar window__bar--bottom">
+          <span class="window__title">gbmagat / keep learning</span>
+          <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+        </div>
+      </div>
+      <div class="footer-meta">
+        <p>© <span data-year>2026</span> Gabriel B. Magat Jr.</p>
+        <p>Built with HTML, CSS &amp; JavaScript · Hosted on GitHub Pages</p>
+        <a class="to-top" href="#profile">Back to top <svg class="icon" aria-hidden="true"><use href="#i-arrow-up"/></svg></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============ Case studies ============ -->
+  <dialog class="case" id="case-jobfinder" aria-labelledby="case-jobfinder-title">
+    <div class="case__window">
+      <div class="window__bar">
+        <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span class="window__title">gbmagat / projects / jobfinder</span>
+        <button class="icon-btn case__close" type="button" data-close aria-label="Close case study"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button>
+      </div>
+      <div class="case__scroll">
+        <p class="project__kicker">Undergraduate thesis · 2026</p>
+        <h2 class="case__title" id="case-jobfinder-title">JobFinder</h2>
+        <p class="case__lead">Ontology-based skill and geographic accessibility matching for opportunity recommendation — a job platform for Angeles City, Pampanga.</p>
+        <figure class="case__figure">
+          <img src="assets/img/projects/jobfinder-hero-1280.webp" srcset="assets/img/projects/jobfinder-hero-640.webp 640w, assets/img/projects/jobfinder-hero-1280.webp 1280w" sizes="(min-width: 960px) 880px, 100vw" width="1280" height="391" loading="lazy" decoding="async" alt="JobFinder home page hero: “Your skills. Your place. Your next job.” over line art of Angeles City.">
+          <figcaption>The JobFinder home page.</figcaption>
+        </figure>
+        <dl class="case__facts">
+          <div><dt>Type</dt><dd>Undergraduate thesis</dd></div>
+          <div><dt>Users</dt><dd>Job seekers, employers, PESO administrators</dd></div>
+          <div><dt>Stack</dt><dd>React, TypeScript, Node.js, Express, SQLite, Leaflet</dd></div>
+          <div><dt>Hosting</dt><dd>Linux VPS · nginx · systemd · Docker image</dd></div>
+        </dl>
+        <h3>Overview</h3>
+        <p>JobFinder is a research prototype for job opportunities in Angeles City. Instead of ranking openings by keywords alone, it combines ontology-based skill matching with shortest-path computation on the city's road network — so recommendations reflect both what a person can do and how far they would really travel.</p>
+        <h3>What I built</h3>
+        <ul class="points">
+          <li>A full-stack platform with a React and TypeScript front end, an Express REST API, and an SQLite database.</li>
+          <li>Separate tools for job seekers, employers, and PESO administrators.</li>
+          <li>Interactive maps with Leaflet and OpenStreetMap data, including a view of the underlying road graph.</li>
+        </ul>
+        <h3>Under the hood</h3>
+        <ul class="points">
+          <li>Dijkstra's shortest-path algorithm implemented from scratch with a custom binary min-heap, running over an 8,282-node OpenStreetMap road graph to rank jobs by road travel distance.</li>
+          <li>Zod schema validation, Helmet security headers, rate limiting, and scrypt password hashing.</li>
+          <li>Deployed on a Linux VPS with nginx and systemd, with automated Let's Encrypt certificate renewal for HTTPS.</li>
+          <li>Published as a Docker image so evaluators can run the whole app with one command; container checks covered startup, authentication, uploads, and persistence.</li>
+        </ul>
+        <figure class="case__figure">
+          <img src="assets/img/projects/jobfinder-search-1280.webp" srcset="assets/img/projects/jobfinder-search-640.webp 640w, assets/img/projects/jobfinder-search-1280.webp 1280w" sizes="(min-width: 960px) 880px, 100vw" width="1280" height="800" loading="lazy" decoding="async" alt="JobFinder search results listed beside a map of Angeles City.">
+          <figcaption>Search results beside the map, with the road graph one click away.</figcaption>
+        </figure>
+        <div class="case__links">
+          <a class="btn btn--primary" href="https://jobfinderangeles.site/" target="_blank" rel="noopener">Live site <svg class="icon" aria-hidden="true"><use href="#i-arrow-ne"/></svg></a>
+          <a class="btn btn--butter" href="https://github.com/gbmagat/JOBFINDER-THESIS" target="_blank" rel="noopener">Source code <svg class="icon" aria-hidden="true"><use href="#i-arrow-ne"/></svg></a>
+          <a class="btn btn--ghost" href="https://hub.docker.com/r/gabmagat/jobfinder" target="_blank" rel="noopener">Docker image <svg class="icon" aria-hidden="true"><use href="#i-arrow-ne"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog class="case" id="case-ourplaces" aria-labelledby="case-ourplaces-title">
+    <div class="case__window">
+      <div class="window__bar">
+        <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span class="window__title">gbmagat / projects / our-places</span>
+        <button class="icon-btn case__close" type="button" data-close aria-label="Close case study"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button>
+      </div>
+      <div class="case__scroll">
+        <p class="project__kicker">Course final project · 2026</p>
+        <h2 class="case__title" id="case-ourplaces-title">Our Places</h2>
+        <p class="case__lead">A private web app for two people to discover places, plan visits, keep a shared record of what they did together, and review each visit independently.</p>
+        <figure class="case__figure">
+          <img src="assets/img/projects/ourplaces-feed-1280.webp" srcset="assets/img/projects/ourplaces-feed-640.webp 640w, assets/img/projects/ourplaces-feed-1280.webp 1280w" sizes="(min-width: 960px) 880px, 100vw" width="1280" height="800" loading="lazy" decoding="async" alt="Our Places feed with story filters and the next planned place.">
+          <figcaption>The shared feed, with story filters and the next planned place (demo data).</figcaption>
+        </figure>
+        <dl class="case__facts">
+          <div><dt>Type</dt><dd>Course final project</dd></div>
+          <div><dt>Stack</dt><dd>Next.js (App Router), React, TypeScript, PostgreSQL</dd></div>
+          <div><dt>Maps</dt><dd>Leaflet with OpenStreetMap</dd></div>
+          <div><dt>Testing</dt><dd>Vitest with PGlite</dd></div>
+        </dl>
+        <h3>Overview</h3>
+        <p>Our Places covers restaurants, cafés, museums, parks, and anywhere else worth remembering. Each person's review stays hidden from the other until both have submitted — then the combined score is revealed.</p>
+        <h3>Features</h3>
+        <ul class="points">
+          <li>Map and search: saved places sit at their real coordinates, and pressing Enter searches OpenStreetMap for any real place to save in one step.</li>
+          <li>Nearest first: after you pin your location, search ranks results by distance using the Haversine formula.</li>
+          <li>Planned visits with email reminders, and a four-step experience log with up to six private photos.</li>
+          <li>A feed with filters, reactions, and private comments.</li>
+        </ul>
+        <h3>Under the hood</h3>
+        <ul class="points">
+          <li>Shortest road routes: the server builds a graph from OpenStreetMap roads (respecting one-way streets) and runs Dijkstra's algorithm with a binary-heap priority queue. Roads are saved per map tile, so later routes in the same area take a fraction of a second.</li>
+          <li>Blind reviews are enforced in the server query itself — a partner's review is withheld until both exist.</li>
+          <li>Custom email and password sign-in with scrypt hashes and database-backed sessions; every request is validated with Zod and every query is parameterised.</li>
+        </ul>
+        <h3>Why Next.js instead of a separate Express server?</h3>
+        <p>The app is private, so nothing may reach the browser before the server checks who is asking. Running the pages and the API in one process on one origin means the session is checked before a page renders, there is no CORS to configure, and there is a single service to deploy. The business rules still live in plain TypeScript modules with their own tests.</p>
+        <figure class="case__figure">
+          <img src="assets/img/projects/ourplaces-map-1280.webp" srcset="assets/img/projects/ourplaces-map-640.webp 640w, assets/img/projects/ourplaces-map-1280.webp 1280w" sizes="(min-width: 960px) 880px, 100vw" width="1280" height="800" loading="lazy" decoding="async" alt="Our Places shared map of Metro Manila with saved places and a details panel.">
+          <figcaption>Saved places on the shared map, with status filters and Near me (demo data).</figcaption>
+        </figure>
+        <div class="case__links">
+          <a class="btn btn--primary" href="https://ourplaces.igst.site/" target="_blank" rel="noopener">Live app (sign-in) <svg class="icon" aria-hidden="true"><use href="#i-arrow-ne"/></svg></a>
+          <a class="btn btn--butter" href="https://github.com/gbmagat/HAU-6APSI-FINAL-PROEJCT_MAGAT" target="_blank" rel="noopener">Source code <svg class="icon" aria-hidden="true"><use href="#i-arrow-ne"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog class="case" id="case-itsamatch" aria-labelledby="case-itsamatch-title">
+    <div class="case__window">
+      <div class="window__bar">
+        <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span class="window__title">gbmagat / projects / its-a-match</span>
+        <button class="icon-btn case__close" type="button" data-close aria-label="Close case study"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button>
+      </div>
+      <div class="case__scroll">
+        <p class="project__kicker">Research simulation platform · Full-stack developer</p>
+        <h2 class="case__title" id="case-itsamatch-title">It's a Match</h2>
+        <p class="case__lead">A responsive dating-app simulation developed for an academic research study on language, text styles, and perceived desirability.</p>
+        <figure class="case__figure">
+          <img src="assets/img/projects/itsamatch-home-1280.webp" srcset="assets/img/projects/itsamatch-home-640.webp 640w, assets/img/projects/itsamatch-home-1280.webp 1280w" sizes="(min-width: 960px) 880px, 100vw" width="1280" height="800" loading="lazy" decoding="async" alt="It's a Match landing page.">
+          <figcaption>The participant landing page.</figcaption>
+        </figure>
+        <dl class="case__facts">
+          <div><dt>Role</dt><dd>Full-stack developer</dd></div>
+          <div><dt>Type</dt><dd>Research platform</dd></div>
+          <div><dt>Stack</dt><dd>React, Vite, Node.js, Express, MySQL</dd></div>
+          <div><dt>Testing</dt><dd>Playwright flow checks</dd></div>
+        </dl>
+        <h3>Overview</h3>
+        <p>Participants move through scripted conversations and choose their replies, while the research team follows progress from a private dashboard. The visual designs and conversation scripts were supplied by the research team; I implemented them and built the system around them.</p>
+        <h3>What I built</h3>
+        <ul class="points">
+          <li>Scripted Filipino and English conversations with multiple-choice replies, in three text styles: formal, informal, and colloquial.</li>
+          <li>Participant-selected conversation order with resumable progress in the browser.</li>
+          <li>An Express API with MySQL storage for participant records and completion tracking.</li>
+          <li>A password-protected researcher dashboard with completion statistics and CSV export.</li>
+          <li>Responsive desktop and mobile layouts.</li>
+        </ul>
+        <h3>Quality checks</h3>
+        <ul class="points">
+          <li>Playwright flow tests at desktop (1366×650) and mobile (390×844) viewport sizes.</li>
+          <li>An isolated in-memory database adapter for development checks, so tests never touch the live study.</li>
+        </ul>
+        <div class="case__links">
+          <a class="btn btn--primary" href="https://itsamatch.online/" target="_blank" rel="noopener">Live site <svg class="icon" aria-hidden="true"><use href="#i-arrow-ne"/></svg></a>
+          <a class="btn btn--butter" href="https://github.com/gbmagat/it-s-a-match" target="_blank" rel="noopener">Source code <svg class="icon" aria-hidden="true"><use href="#i-arrow-ne"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog class="case" id="case-mopac" aria-labelledby="case-mopac-title">
+    <div class="case__window">
+      <div class="window__bar">
+        <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span class="window__title">gbmagat / projects / mopac</span>
+        <button class="icon-btn case__close" type="button" data-close aria-label="Close case study"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button>
+      </div>
+      <div class="case__scroll">
+        <p class="project__kicker">Academic final project · 2024</p>
+        <h2 class="case__title" id="case-mopac-title">MOPAC</h2>
+        <p class="case__lead">A responsive, multi-page website for the ADF Museum of Philippine Arts and Culture in Pampanga — my first website project.</p>
+        <figure class="case__figure">
+          <img src="assets/img/projects/mopac-exhibitions-1280.webp" srcset="assets/img/projects/mopac-exhibitions-640.webp 640w, assets/img/projects/mopac-exhibitions-1280.webp 1280w" sizes="(min-width: 960px) 880px, 100vw" width="1280" height="800" loading="lazy" decoding="async" alt="MOPAC Exhibitions page with a gallery hallway of framed paintings.">
+          <figcaption>The Exhibitions page.</figcaption>
+        </figure>
+        <dl class="case__facts">
+          <div><dt>Role</dt><dd>Solo — structure, design, and build</dd></div>
+          <div><dt>Type</dt><dd>Academic final project</dd></div>
+          <div><dt>Stack</dt><dd>HTML, CSS, JavaScript, jQuery</dd></div>
+          <div><dt>Hosting</dt><dd>GitHub Pages</dd></div>
+        </dl>
+        <h3>Overview</h3>
+        <p>I built MOPAC on my own, handling the information architecture, visual design, and implementation. It brings together museum information, exhibition galleries, artwork highlights, and visitor details.</p>
+        <h3>Features</h3>
+        <ul class="points">
+          <li>A video introduction and featured artwork on the homepage.</li>
+          <li>Exhibition pages covering the Mabini Art Movement, the 13 National Artists, and Ifugao artifacts.</li>
+          <li>Visitor information with an embedded Google Maps location.</li>
+          <li>Homepage search for artwork highlights, powered by jQuery.</li>
+          <li>Responsive layouts and a mobile navigation menu.</li>
+        </ul>
+        <figure class="case__figure">
+          <img src="assets/img/projects/mopac-highlights-1280.webp" srcset="assets/img/projects/mopac-highlights-640.webp 640w, assets/img/projects/mopac-highlights-1280.webp 1280w" sizes="(min-width: 960px) 880px, 100vw" width="1280" height="800" loading="lazy" decoding="async" alt="MOPAC Art Highlights section with three featured artwork cards.">
+          <figcaption>Art highlights on the homepage.</figcaption>
+        </figure>
+        <div class="case__links">
+          <a class="btn btn--primary" href="https://gbmagat.github.io/MOPAC/" target="_blank" rel="noopener">Live site <svg class="icon" aria-hidden="true"><use href="#i-arrow-ne"/></svg></a>
+          <a class="btn btn--butter" href="https://github.com/gbmagat/MOPAC" target="_blank" rel="noopener">Source code <svg class="icon" aria-hidden="true"><use href="#i-arrow-ne"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <div class="toast" role="status" aria-live="polite">
+    <svg class="toast__dino" aria-hidden="true"><use href="#dino"/></svg>
+    <span data-toast-text></span>
+  </div>
+</body>
+</html>
