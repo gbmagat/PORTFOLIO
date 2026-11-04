@@ -271,6 +271,324 @@
     termObserver.observe(terminal);
   }
 
+  /* ---------- Divider band: seamless scrolling rows ---------- */
+  forEach(document.querySelectorAll('[data-marquee]'), function (row) {
+    var track = row.querySelector('.band__track');
+    if (!track || reduceMotion.matches) return;
+    var originals = Array.prototype.slice.call(track.children);
+    var minWidth = Math.max(window.innerWidth, (window.screen && screen.width) || 0, 1280) * 1.1;
+    for (var n = 0; track.scrollWidth < minWidth && n < 6; n++) {
+      originals.forEach(function (li) { track.appendChild(li.cloneNode(true)); });
+    }
+    row.appendChild(track.cloneNode(true)); // second copy makes the loop seamless
+    row.style.setProperty('--marquee-time', Math.round(track.scrollWidth / 55) + 's');
+    row.classList.add('is-ready');
+  });
+
+  /* ---------- Chat with Gabriel ---------- */
+  // To deliver chat messages straight to Gabriel's inbox, paste a free Web3Forms access key below
+  // (create one at https://web3forms.com with gabrielmagatjr.cs@gmail.com). While it is empty,
+  // the chat opens the visitor's own email app with the message ready to send.
+  var CHAT = {
+    web3formsKey: '',
+    email: 'gabrielmagatjr.cs@gmail.com',
+    linkedin: 'https://www.linkedin.com/in/gabriel-magat-jr/'
+  };
+
+  var chatRoot = document.querySelector('[data-chat]');
+  if (chatRoot) {
+    var chatPanel = chatRoot.querySelector('.chat__panel');
+    var chatToggle = chatRoot.querySelector('[data-chat-toggle]');
+    var chatBadge = chatRoot.querySelector('[data-chat-badge]');
+    var chatLog = chatRoot.querySelector('[data-chat-log]');
+    var chatChips = chatRoot.querySelector('[data-chat-chips]');
+    var chatForm = chatRoot.querySelector('[data-chat-form]');
+    var chatInput = chatRoot.querySelector('[data-chat-input]');
+    var chatTrap = chatRoot.querySelector('[name="botcheck"]');
+    var chatNote = chatRoot.querySelector('[data-chat-note]');
+    var chatClose = chatRoot.querySelector('[data-chat-close]');
+    var finePointer = window.matchMedia('(pointer: fine)');
+
+    var chatState = 'menu'; // menu → name → email → message → sending
+    var draft = { name: '', email: '', message: '' };
+    var greeted = false;
+    var busy = false;
+
+    var MENU = [
+      ['What does Gabriel do?', 'about'],
+      ['Show me projects', 'projects'],
+      ['Is he available?', 'available'],
+      ['His résumé', 'resume'],
+      ['Message Gabriel', 'message']
+    ];
+
+    if (chatNote) {
+      chatNote.textContent = CHAT.web3formsKey
+        ? 'Messages are delivered to Gabriel’s email.'
+        : 'Messages open in your email app, addressed to Gabriel.';
+    }
+    if (chatBadge && readStore('chatSeen') === '1') chatBadge.hidden = true;
+
+    var addText = function (el, str) { el.appendChild(document.createTextNode(str)); };
+    var addLink = function (el, label, href, external, className) {
+      var a = document.createElement('a');
+      a.href = href;
+      a.textContent = label;
+      if (className) a.className = className;
+      if (external) { a.target = '_blank'; a.rel = 'noopener'; }
+      el.appendChild(a);
+      return a;
+    };
+    var linkRow = function (el) {
+      var row = document.createElement('div');
+      row.className = 'msg__links';
+      el.appendChild(row);
+      return row;
+    };
+
+    function bubble(from, content) {
+      var el = document.createElement('div');
+      el.className = 'msg msg--' + from;
+      if (typeof content === 'function') content(el); else addText(el, content);
+      chatLog.appendChild(el);
+      chatLog.scrollTop = chatLog.scrollHeight;
+      return el;
+    }
+
+    // Dino "types" for a moment, then replies
+    function say(content, delay) {
+      return new Promise(function (resolve) {
+        var typing = bubble('bot', function (el) {
+          el.setAttribute('aria-hidden', 'true');
+          el.innerHTML = '<span class="typing"><i></i><i></i><i></i></span>';
+        });
+        setTimeout(function () {
+          chatLog.removeChild(typing);
+          resolve(bubble('bot', content));
+        }, reduceMotion.matches ? 0 : (delay || 650));
+      });
+    }
+
+    function setChips(list) {
+      chatChips.innerHTML = '';
+      (list || []).forEach(function (item) {
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'chip';
+        b.textContent = item[0];
+        b.addEventListener('click', function () {
+          if (busy) return;
+          bubble('me', item[0]);
+          run(item[1]);
+        });
+        chatChips.appendChild(b);
+      });
+    }
+
+    function ready(chips, placeholder) {
+      busy = false;
+      setChips(chips);
+      chatInput.placeholder = placeholder || 'Type a message…';
+      chatLog.scrollTop = chatLog.scrollHeight; // chips take space, so keep the newest reply in view
+    }
+
+    function run(action) {
+      busy = true;
+      setChips([]);
+      if (action === 'message') { startMessage(''); return; }
+      var replies = {
+        about: 'Gabriel is a fourth-year Computer Science student at Holy Angel University and a freelance web developer since 2025. He builds full-stack web apps with React, Node.js, and SQL, then deploys them on Linux servers.',
+        stack: 'His main tools are React, Next.js, TypeScript, Node.js, Express, MySQL, PostgreSQL, and SQLite — plus Linux, nginx, AWS, and Docker for deployment.',
+        available: 'He’s open to opportunities and freelance web projects. Leave him a message here and he’ll get back to you by email.',
+        hello: 'Hello! What would you like to know about Gabriel?',
+        projects: function (el) {
+          addText(el, 'Here are his featured projects. Tap one to read its case study:');
+          var row = linkRow(el);
+          [['JobFinder', 'case-jobfinder'], ['Our Places', 'case-ourplaces'], ['It’s a Match', 'case-itsamatch'], ['MOPAC', 'case-mopac']].forEach(function (p) {
+            var b = document.createElement('button');
+            b.type = 'button';
+            b.className = 'msg__link';
+            b.textContent = p[0];
+            b.setAttribute('data-open', p[1]);
+            row.appendChild(b);
+          });
+        },
+        resume: function (el) {
+          addText(el, 'Here’s his résumé — you can save it as a PDF from that page.');
+          addLink(linkRow(el), 'Open résumé', 'resume.html', false, 'msg__link');
+        },
+        contact: function (el) {
+          addText(el, 'You can message him right here, email ');
+          addLink(el, CHAT.email, 'mailto:' + CHAT.email);
+          addText(el, ', or connect on ');
+          addLink(el, 'LinkedIn', CHAT.linkedin, true);
+          addText(el, '.');
+        }
+      };
+      var next = action === 'available'
+        ? [['Message Gabriel', 'message'], ['Show me projects', 'projects'], ['His résumé', 'resume']]
+        : MENU;
+      say(replies[action] || replies.hello).then(function () { ready(next); });
+    }
+
+    function startMessage(prefill) {
+      busy = true;
+      setChips([]);
+      draft = { name: '', email: '', message: prefill || '' };
+      chatState = 'name';
+      say(prefill ? 'I’ll pass that on to Gabriel. First, what’s your name?' : 'Sure! What’s your name?')
+        .then(function () { ready([], 'Your name'); });
+    }
+
+    function onName(value) {
+      draft.name = value.slice(0, 80);
+      chatState = 'email';
+      say('Nice to meet you, ' + draft.name + '! What’s your email address, so Gabriel can reply?')
+        .then(function () { ready([], 'you@example.com'); });
+    }
+
+    function onEmail(value) {
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value)) {
+        say('Hmm, that doesn’t look like an email address. Could you check it?')
+          .then(function () { ready([], 'you@example.com'); });
+        return;
+      }
+      draft.email = value.slice(0, 120);
+      if (draft.message) { send(); return; }
+      chatState = 'message';
+      say('Got it. What would you like to tell Gabriel?')
+        .then(function () { ready([], 'Your message'); });
+    }
+
+    function mailtoHref() {
+      var subject = 'Hello from your portfolio — ' + draft.name;
+      var body = draft.message + '\n\n— ' + draft.name + ' (' + draft.email + ')';
+      return 'mailto:' + CHAT.email + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    }
+
+    function finish(content) {
+      say(content).then(function () {
+        chatState = 'menu';
+        draft = { name: '', email: '', message: '' };
+        ready(MENU);
+      });
+    }
+
+    function handOffToEmail(failed) {
+      var href = mailtoHref();
+      finish(function (el) {
+        addText(el, failed ? 'I couldn’t send that just now. ' : 'Almost done! ');
+        addText(el, 'Tap below to open your email app with your message ready, then press send.');
+        addLink(linkRow(el), 'Open my email app', href, false, 'msg__link msg__link--strong');
+      });
+    }
+
+    function send() {
+      chatState = 'sending';
+      if (chatTrap && chatTrap.checked) { finish('Thanks! Your message is on its way.'); return; }
+      if (!CHAT.web3formsKey || !window.fetch) { handOffToEmail(false); return; }
+      var replyTo = draft.email;
+      say('Sending your message…', 300).then(function () {
+        return fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify({
+            access_key: CHAT.web3formsKey,
+            subject: 'Portfolio chat from ' + draft.name,
+            from_name: 'Portfolio chat',
+            name: draft.name,
+            email: draft.email,
+            message: draft.message
+          })
+        }).then(function (res) { return res.json(); });
+      }).then(function (data) {
+        if (!data || !data.success) throw new Error('not sent');
+        finish('Sent! ✓ Gabriel will reply to ' + replyTo + '. Thanks for reaching out.');
+      }).catch(function () { handOffToEmail(true); });
+    }
+
+    // Short questions get an instant answer; anything else is passed on to Gabriel
+    function route(value) {
+      if (value.split(/\s+/).length <= 5) {
+        if (/r[eé]sum|\bcv\b/i.test(value)) return run('resume');
+        if (/project|portfolio|thesis|jobfinder/i.test(value)) return run('projects');
+        if (/skill|stack|tech|language|framework|\btools?\b/i.test(value)) return run('stack');
+        if (/hire|hiring|availab|freelance|intern|opportunit|\bjobs?\b/i.test(value)) return run('available');
+        if (/contact|e-?mail|linkedin|github|reach/i.test(value)) return run('contact');
+        if (/^(hi|hello|hey|yo|kumusta|musta|good (morning|afternoon|evening))\b/i.test(value)) return run('hello');
+      }
+      startMessage(value);
+    }
+
+    function autosize() {
+      chatInput.style.height = 'auto';
+      chatInput.style.height = Math.min(chatInput.scrollHeight + 3, 120) + 'px';
+      chatInput.style.overflowY = chatInput.scrollHeight > 120 ? 'auto' : 'hidden';
+    }
+
+    chatInput.addEventListener('input', autosize);
+    chatInput.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' && !e.shiftKey && !e.isComposing) {
+        e.preventDefault();
+        if (chatForm.requestSubmit) chatForm.requestSubmit();
+        else chatForm.dispatchEvent(new Event('submit', { cancelable: true }));
+      }
+    });
+    chatForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var value = chatInput.value.trim();
+      if (!value || busy) return;
+      chatInput.value = '';
+      autosize();
+      bubble('me', value);
+      busy = true;
+      if (chatState === 'name') onName(value);
+      else if (chatState === 'email') onEmail(value);
+      else if (chatState === 'message') { draft.message = value.slice(0, 2000); send(); }
+      else route(value);
+    });
+
+    function openChat() {
+      if (!chatPanel.hidden) return;
+      chatPanel.hidden = false;
+      chatToggle.setAttribute('aria-expanded', 'true');
+      root.classList.add('chat-open');
+      if (chatBadge) chatBadge.hidden = true;
+      writeStore('chatSeen', '1');
+      if (!greeted) {
+        greeted = true;
+        busy = true;
+        say('Hi! I’m Dino — I look after Gabriel’s site.', 500)
+          .then(function () { return say('Ask me something below, or leave Gabriel a message and he’ll reply by email.', 700); })
+          .then(function () { ready(MENU); });
+      }
+      // Mouse users can type right away; on touch screens focus the close button so the keyboard stays down
+      setTimeout(function () { (finePointer.matches ? chatInput : chatClose || chatInput).focus(); }, 60);
+    }
+
+    function closeChat(returnFocus) {
+      if (chatPanel.hidden) return;
+      chatPanel.hidden = true;
+      chatToggle.setAttribute('aria-expanded', 'false');
+      root.classList.remove('chat-open');
+      if (returnFocus) chatToggle.focus();
+    }
+
+    chatToggle.addEventListener('click', function () {
+      if (chatPanel.hidden) openChat(); else closeChat(false);
+    });
+    if (chatClose) chatClose.addEventListener('click', function () { closeChat(true); });
+    document.addEventListener('keydown', function (e) {
+      // Esc closes the chat, unless a case study is open on top of it (Esc closes that first)
+      if (e.key === 'Escape' && !chatPanel.hidden && !document.querySelector('dialog[open]')) closeChat(true);
+    });
+    document.addEventListener('click', function (e) {
+      if (e.target.closest('[data-chat-open]')) openChat();
+    });
+    // A link to .../#chat opens the chat straight away
+    if (location.hash === '#chat') openChat();
+  }
+
   /* ---------- Résumé: print / save as PDF ---------- */
   forEach(document.querySelectorAll('[data-print]'), function (btn) {
     btn.addEventListener('click', function () { window.print(); });

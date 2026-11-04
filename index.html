@@ -28,7 +28,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..800&amp;family=JetBrains+Mono:wght@400..700&amp;display=swap">
-  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/main.css?v=2">
 
   <!-- Apply the saved (or system) theme before the page paints -->
   <script>
@@ -42,7 +42,7 @@
       document.documentElement.classList.add('js');
     })();
   </script>
-  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/main.js?v=2" defer></script>
 
   <script type="application/ld+json">
   {
@@ -89,6 +89,7 @@
     <symbol id="i-music" viewBox="0 0 16 16"><path d="M6 2h8v2H6Z M6 4h1v7H6Z M13 4h1v6h-1Z M3 10h4v3H3Z M10 9h4v3h-4Z"/></symbol>
     <symbol id="i-cap" viewBox="0 0 16 16"><path d="M7 2h2v1H7Z M5 3h6v1H5Z M3 4h10v1H3Z M1 5h14v1H1Z M3 6h10v1H3Z M5 7h6v1H5Z M7 8h2v1H7Z M4 7h1v3h6V7h1v4H4Z M14 5h1v5h-1Z"/></symbol>
     <symbol id="i-award" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M5 1h6v1h1v1h1v5h-1v1h-1v1H5V9H4V8H3V3h1V2h1Z M7 4h2v1h1v2H9v1H7V7H6V5h1Z M4 10h3v5H6v-1H5v1H4Z M9 10h3v5h-1v-1h-1v1H9Z"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M3 2h10v1h1v1h1v6h-1v1h-1v1H7v1H6v1H5v1H4v-3H3v-1H2v-1H1V4h1V3h1Z M4 6h2v2H4Z M7 6h2v2H7Z M10 6h2v2h-2Z"/></symbol>
     <symbol id="i-github" viewBox="0 0 16 16"><path shape-rendering="geometricPrecision" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></symbol>
     <symbol id="i-linkedin" viewBox="0 0 24 24"><path shape-rendering="geometricPrecision" d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></symbol>
     <!-- Pixel dinosaur from the GitHub profile artwork (80×84 grid) -->
@@ -224,6 +225,37 @@
         </ul>
       </div>
     </section>
+
+    <!-- ============ Divider band: scrolling skills (decorative; the Stack section lists them) ============ -->
+    <div class="band" aria-hidden="true">
+      <div class="band__row" data-marquee>
+        <ul class="band__track">
+          <li>React</li>
+          <li>Next.js</li>
+          <li>TypeScript</li>
+          <li>Node.js</li>
+          <li>Express</li>
+          <li>PostgreSQL</li>
+          <li>MySQL</li>
+          <li>SQLite</li>
+          <li>Tailwind CSS</li>
+          <li>Playwright</li>
+        </ul>
+      </div>
+      <div class="ground band__ground"></div>
+      <div class="band__row band__row--outline band__row--reverse" data-marquee>
+        <ul class="band__track">
+          <li>Cloud computing</li>
+          <li>Linux servers</li>
+          <li>Nginx</li>
+          <li>AWS</li>
+          <li>Docker</li>
+          <li>DNS &amp; HTTPS</li>
+          <li>Full-stack</li>
+          <li>Shortest paths</li>
+        </ul>
+      </div>
+    </div>
 
     <!-- ============ Projects ============ -->
     <section class="section" id="projects" data-label="projects" aria-labelledby="projects-title">
@@ -661,6 +693,7 @@
               <p>Have a project, an opportunity, or a question? My inbox is open — I'm always happy to talk about web development, deployment, and cloud computing.</p>
               <div class="contact__actions">
                 <a class="btn btn--primary" href="mailto:gabrielmagatjr.cs@gmail.com"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg> Email me</a>
+                <button class="btn btn--butter" type="button" data-chat-open><svg class="icon" aria-hidden="true"><use href="#i-chat"/></svg> Chat with me</button>
                 <button class="btn btn--ghost" type="button" data-copy="gabrielmagatjr.cs@gmail.com"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg> Copy email</button>
               </div>
               <p class="contact__email">gabrielmagatjr.cs@gmail.com</p>
@@ -711,7 +744,6 @@
       </div>
       <div class="footer-meta">
         <p>© <span data-year>2026</span> Gabriel B. Magat Jr.</p>
-        <p>Built with HTML, CSS &amp; JavaScript · Hosted on GitHub Pages</p>
         <a class="to-top" href="#profile">Back to top <svg class="icon" aria-hidden="true"><use href="#i-arrow-up"/></svg></a>
       </div>
     </div>
@@ -907,6 +939,36 @@
   <div class="toast" role="status" aria-live="polite">
     <svg class="toast__dino" aria-hidden="true"><use href="#dino"/></svg>
     <span data-toast-text></span>
+  </div>
+
+  <!-- ============ Chat with Gabriel ============ -->
+  <div class="chat" data-chat>
+    <section class="window chat__panel" id="chat-panel" role="dialog" aria-modal="false" aria-labelledby="chat-title" hidden>
+      <div class="window__bar">
+        <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+        <h2 class="window__title" id="chat-title">gbmagat / chat</h2>
+        <button class="icon-btn chat__close" type="button" data-chat-close aria-label="Close chat"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button>
+      </div>
+      <div class="chat__who">
+        <span class="chat__avatar" aria-hidden="true"><svg><use href="#dino"/></svg></span>
+        <span><b>Dino</b> <small>Gabriel's site assistant · passes messages to him</small></span>
+      </div>
+      <div class="chat__log" role="log" aria-live="polite" data-chat-log></div>
+      <div class="chat__chips" data-chat-chips></div>
+      <form class="chat__form" data-chat-form>
+        <label class="sr-only" for="chat-input">Your message</label>
+        <textarea id="chat-input" rows="1" maxlength="2000" placeholder="Type a message…" data-chat-input></textarea>
+        <input class="chat__hp" type="checkbox" name="botcheck" tabindex="-1" autocomplete="off">
+        <button class="chat__send" type="submit" aria-label="Send message"><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></button>
+      </form>
+      <p class="chat__note" data-chat-note>Messages reach Gabriel by email.</p>
+    </section>
+
+    <button class="chat-launcher" type="button" data-chat-toggle aria-controls="chat-panel" aria-expanded="false">
+      <svg class="icon" aria-hidden="true"><use href="#i-chat"/></svg>
+      <span>Chat<span class="sr-only"> with Gabriel</span></span>
+      <span class="chat-launcher__badge" data-chat-badge>1<span class="sr-only"> new message</span></span>
+    </button>
   </div>
 </body>
 </html>
