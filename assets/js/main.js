@@ -271,17 +271,18 @@
     termObserver.observe(terminal);
   }
 
-  /* ---------- Divider band: seamless scrolling rows ---------- */
+  /* ---------- Divider: seamless scrolling row (data-marquee = speed in px/s) ---------- */
   forEach(document.querySelectorAll('[data-marquee]'), function (row) {
-    var track = row.querySelector('.band__track');
+    var track = row.firstElementChild;
     if (!track || reduceMotion.matches) return;
+    var speed = parseFloat(row.getAttribute('data-marquee')) || 40;
     var originals = Array.prototype.slice.call(track.children);
     var minWidth = Math.max(window.innerWidth, (window.screen && screen.width) || 0, 1280) * 1.1;
     for (var n = 0; track.scrollWidth < minWidth && n < 6; n++) {
       originals.forEach(function (li) { track.appendChild(li.cloneNode(true)); });
     }
     row.appendChild(track.cloneNode(true)); // second copy makes the loop seamless
-    row.style.setProperty('--marquee-time', Math.round(track.scrollWidth / 55) + 's');
+    row.style.setProperty('--marquee-time', Math.round(track.scrollWidth / speed) + 's');
     row.classList.add('is-ready');
   });
 

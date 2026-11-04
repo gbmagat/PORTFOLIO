@@ -5,7 +5,7 @@
 
    1  Tokens        7  Projects        13 Case study dialog
    2  Base          8  About           14 Toast
-   3  Layout        9  Experience      15 Divider band
+   3  Layout        9  Experience      15 Divider (badge trail)
    4  Components    10 Stack           16 Chat
    5  Header        11 Contact         17 Motion
    6  Hero          12 Footer
@@ -1100,65 +1100,52 @@ strong, b { font-weight: 700; }
   .toast { bottom: calc(max(20px, env(safe-area-inset-bottom)) + 66px); } /* sits above the Chat button */
 }
 
-/* 15 — Divider band (scrolling skills) ----------------------------------- */
-.band {
-  --band-bg: #405039;
-  --band-ink: #f4f1e4;
-  --band-accent: #f4e8b2;
-  --band-outline: #a3a997;
-  --band-edge: #354333;
-  position: relative;
+/* 15 — Divider: README badges travelling along the desert ground ----------- */
+.trail {
   margin-top: clamp(44px, 6vw, 72px);
-  padding: clamp(8px, 1.1vw, 12px) 0;
   overflow: hidden;
-  background: var(--band-bg);
-  border-block: 2px solid var(--band-edge);
-  color: var(--band-ink);
+  background: var(--surface-2);
+  border-block: 2px solid var(--line);
   -webkit-user-select: none;
           user-select: none;
 }
-[data-theme="night"] .band {
-  --band-bg: #1f261c;
-  --band-ink: #e7e5d7;
-  --band-accent: #e6d68f;
-  --band-outline: #73766a;
-  --band-edge: #3b4636;
-}
-.band__row { display: flex; width: max-content; }
-.band__track { display: flex; flex: none; align-items: center; margin: 0; padding: 0; list-style: none; }
-.band__track li {
+.trail__row { display: flex; width: max-content; }
+.trail__track {
+  position: relative;
   display: flex;
-  align-items: center;
-  gap: clamp(12px, 1.6vw, 20px);
-  padding-right: clamp(12px, 1.6vw, 20px);
-  font: 800 clamp(1rem, 1.9vw, 1.4rem)/1.25 var(--font-sans);
-  letter-spacing: -.02em;
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-/* Pixel cactus between words (same shape as the GitHub artwork) */
-.band__track li::after {
-  content: "";
   flex: none;
-  width: .5em;
-  height: .6em;
-  background: var(--band-accent);
-  -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 31 37'><path d='M10 0h9v37h-9Z M0 8h6v12h4v6H2v-3H0Z M25 3h6v20h-3v3h-9v-6h6Z'/></svg>") center / contain no-repeat;
-          mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 31 37'><path d='M10 0h9v37h-9Z M0 8h6v12h4v6H2v-3H0Z M25 3h6v20h-3v3h-9v-6h6Z'/></svg>") center / contain no-repeat;
+  align-items: flex-end;
+  gap: 10px;
+  margin: 0;
+  padding: 16px 10px 15px 0; /* the bottom padding makes badges stand on the ground line */
+  list-style: none;
 }
-/* Outline drawn behind the fill, so overlapping letter shapes don't show seams */
-.band__row--outline .band__track li {
-  color: var(--band-bg);
-  letter-spacing: .01em;
-  -webkit-text-stroke: 2px var(--band-outline);
-  paint-order: stroke fill;
+/* Ground line and pebbles (same shape as the GitHub artwork), moving with the badges */
+.trail__track::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 20px;
+  background: var(--line);
+  -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='20' viewBox='0 0 600 20'><g fill='none' stroke='black' stroke-width='2'><path d='M0 6h120l5 3h30l5-3h170l5-4h10l5 4h120l5 3h24l5-3h96'/><path d='M18 14h6m40 4h8m60-5h8m50 5h5m42-6h10m64 7h6m46-6h7m38 4h10m48-5h6m60 5h8'/></g></svg>") repeat-x 0 0 / 600px 20px;
+          mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='20' viewBox='0 0 600 20'><g fill='none' stroke='black' stroke-width='2'><path d='M0 6h120l5 3h30l5-3h170l5-4h10l5 4h120l5 3h24l5-3h96'/><path d='M18 14h6m40 4h8m60-5h8m50 5h5m42-6h10m64 7h6m46-6h7m38 4h10m48-5h6m60 5h8'/></g></svg>") repeat-x 0 0 / 600px 20px;
 }
-.band__row--outline .band__track li::after { width: 6px; height: 6px; -webkit-mask: none; mask: none; }
-.band__ground { margin: 0; background: var(--band-accent); opacity: .45; animation: ground-run 9s linear infinite; }
-.band__row.is-ready { animation: marquee var(--marquee-time, 45s) linear infinite; }
-.band__row--reverse.is-ready { animation-direction: reverse; }
-.band:hover .band__row,
-.band:hover .band__ground { animation-play-state: paused; }
+[data-theme="night"] .trail__track::after { background: #56634f; }
+/* Pixel cacti standing between the badges */
+.trail__cactus {
+  flex: none;
+  width: 22px;
+  height: 26px;
+  margin: 0 6px -1px;
+  background: var(--cactus-c);
+  -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 31 37'><path d='M10 0h9v37h-9Z M0 8h6v12h4v6H2v-3H0Z M25 3h6v20h-3v3h-9v-6h6Z'/></svg>") center bottom / contain no-repeat;
+          mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 31 37'><path d='M10 0h9v37h-9Z M0 8h6v12h4v6H2v-3H0Z M25 3h6v20h-3v3h-9v-6h6Z'/></svg>") center bottom / contain no-repeat;
+}
+.trail__cactus--small { width: 15px; height: 18px; }
+.trail__row.is-ready { animation: marquee var(--marquee-time, 60s) linear infinite; }
+.trail:hover .trail__row { animation-play-state: paused; }
 
 /* 16 — Chat -------------------------------------------------------------- */
 .chat-launcher {
@@ -1365,7 +1352,6 @@ strong, b { font-weight: 700; }
 @keyframes t-type { to { width: 12ch; } }
 @keyframes case-in { from { opacity: 0; transform: translateY(14px) scale(.985); } }
 @keyframes marquee { to { transform: translateX(-50%); } }
-@keyframes ground-run { to { -webkit-mask-position: -600px 0; mask-position: -600px 0; } }
 @keyframes chat-in { from { opacity: 0; transform: translateY(12px) scale(.97); } }
 @keyframes msg-in { from { opacity: 0; transform: translateY(6px); } }
 @keyframes typing { 0%, 100% { transform: translateY(0); opacity: .45; } 50% { transform: translateY(-3px); opacity: 1; } }

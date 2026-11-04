@@ -28,7 +28,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..800&amp;family=JetBrains+Mono:wght@400..700&amp;display=swap">
-  <link rel="stylesheet" href="assets/css/main.css?v=3">
+  <link rel="stylesheet" href="assets/css/main.css?v=4">
 
   <!-- Apply the saved (or system) theme before the page paints -->
   <script>
@@ -42,7 +42,7 @@
       document.documentElement.classList.add('js');
     })();
   </script>
-  <script src="assets/js/main.js?v=3" defer></script>
+  <script src="assets/js/main.js?v=4" defer></script>
 
   <script type="application/ld+json">
   {
@@ -226,33 +226,30 @@
       </div>
     </section>
 
-    <!-- ============ Divider band: scrolling skills (decorative; the Stack section lists them) ============ -->
-    <div class="band" aria-hidden="true">
-      <div class="band__row" data-marquee>
-        <ul class="band__track">
-          <li>React</li>
-          <li>Next.js</li>
-          <li>TypeScript</li>
-          <li>Node.js</li>
-          <li>Express</li>
-          <li>PostgreSQL</li>
-          <li>MySQL</li>
-          <li>SQLite</li>
-          <li>Tailwind CSS</li>
-          <li>Playwright</li>
-        </ul>
-      </div>
-      <div class="ground band__ground"></div>
-      <div class="band__row band__row--outline band__row--reverse" data-marquee>
-        <ul class="band__track">
-          <li>Cloud computing</li>
-          <li>Linux servers</li>
-          <li>Nginx</li>
-          <li>AWS</li>
-          <li>Docker</li>
-          <li>DNS &amp; HTTPS</li>
-          <li>Full-stack</li>
-          <li>Shortest paths</li>
+    <!-- ============ Divider: README tech badges travelling along the desert ground ============
+         Decorative (the Stack section lists the same tools). Edit the badges here. -->
+    <div class="trail" aria-hidden="true">
+      <div class="trail__row" data-marquee="32">
+        <ul class="trail__track">
+          <li class="badge b-react">React</li>
+          <li class="badge b-nextjs">Next.js</li>
+          <li class="trail__cactus"></li>
+          <li class="badge b-typescript">TypeScript</li>
+          <li class="badge b-node">Node.js</li>
+          <li class="badge b-express">Express</li>
+          <li class="trail__cactus trail__cactus--small"></li>
+          <li class="badge b-postgresql">PostgreSQL</li>
+          <li class="badge b-mysql">MySQL</li>
+          <li class="badge b-sqlite">SQLite</li>
+          <li class="trail__cactus"></li>
+          <li class="badge b-aws">AWS</li>
+          <li class="badge b-linux">Linux</li>
+          <li class="badge b-nginx">Nginx</li>
+          <li class="badge b-docker">Docker</li>
+          <li class="trail__cactus trail__cactus--small"></li>
+          <li class="badge b-tailwind">Tailwind CSS</li>
+          <li class="badge b-playwright">Playwright</li>
+          <li class="badge b-git">Git</li>
         </ul>
       </div>
     </div>
