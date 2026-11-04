@@ -611,44 +611,98 @@ strong, b { font-weight: 700; }
 .hero__where { display: inline-flex; align-items: center; gap: 8px; }
 .hero__where .icon { width: 13px; height: 13px; color: var(--accent); }
 
-.readouts {
+/* The road so far: milestones standing on the desert ground; the dino marks the current year */
+.road { margin-top: 14px; box-shadow: none; }
+.road__range {
+  margin-left: auto;
+  font: 600 .6875rem/1 var(--font-mono);
+  letter-spacing: .14em;
+  white-space: nowrap;
+  color: var(--ink-3);
+}
+.road__stops {
+  --ground-y: 62px;
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 12px;
-  margin: 14px 0 0;
-  padding: 0;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  margin: 0;
+  padding: 20px 0 22px;
   list-style: none;
 }
-.readout {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: 18px 20px;
-  background: var(--surface);
-  border: 2px solid var(--line);
-  border-radius: var(--radius-md);
+.road__stop { position: relative; display: flex; flex-direction: column; align-items: flex-start; padding: 0 18px; }
+/* Each stop draws its own piece of ground, so the road stays continuous when it scrolls */
+.road__stop::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: var(--ground-y);
+  height: 20px;
+  background: var(--line);
+  -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='20' viewBox='0 0 600 20'><g fill='none' stroke='black' stroke-width='2'><path d='M0 6h120l5 3h30l5-3h170l5-4h10l5 4h120l5 3h24l5-3h96'/><path d='M18 14h6m40 4h8m60-5h8m50 5h5m42-6h10m64 7h6m46-6h7m38 4h10m48-5h6m60 5h8'/></g></svg>") repeat-x 0 0 / 600px 20px;
+          mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='20' viewBox='0 0 600 20'><g fill='none' stroke='black' stroke-width='2'><path d='M0 6h120l5 3h30l5-3h170l5-4h10l5 4h120l5 3h24l5-3h96'/><path d='M18 14h6m40 4h8m60-5h8m50 5h5m42-6h10m64 7h6m46-6h7m38 4h10m48-5h6m60 5h8'/></g></svg>") repeat-x 0 0 / 600px 20px;
 }
-.readout__value {
-  font: 700 clamp(1.5rem, 2.6vw, 2rem)/1 var(--font-mono);
-  letter-spacing: -.02em;
-  color: var(--heading);
+.road__stop:nth-child(2)::before { -webkit-mask-position: -230px 0; mask-position: -230px 0; }
+.road__stop:nth-child(3)::before { -webkit-mask-position: -410px 0; mask-position: -410px 0; }
+.road__stop:nth-child(4)::before { -webkit-mask-position: -95px 0; mask-position: -95px 0; }
+.road__stop:nth-child(5)::before { -webkit-mask-position: -340px 0; mask-position: -340px 0; }
+.road__year {
+  display: inline-flex;
+  align-items: center;
+  height: 24px;
+  padding: 0 8px 0 11px;
+  border-radius: 3px;
+  background: var(--bar);
+  box-shadow: inset 3px 0 0 var(--accent);
+  font: 700 .75rem/1 var(--font-mono);
+  letter-spacing: .1em;
+  color: var(--label);
 }
-.readout__label { font-size: .875rem; line-height: 1.4; color: var(--ink-3); }
+.is-now .road__year { background: var(--butter-c); color: var(--butter-ink); }
+.is-now .road__year::after { content: "\00b7  now"; margin-left: 6px; font-weight: 600; white-space: pre; }
+/* Pixel flag for each milestone (pole + notched flag) */
+.road__marker {
+  position: relative;
+  z-index: 1;
+  width: 26px;
+  height: 32px;
+  margin-top: 12px;
+  background: var(--accent);
+  -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 20'><path d='M0 0h2v20H0Z M2 1h13v2h-1v1h-1v2h1v1h1v2H2Z'/></svg>") left bottom / contain no-repeat;
+          mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 20'><path d='M0 0h2v20H0Z M2 1h13v2h-1v1h-1v2h1v1h1v2H2Z'/></svg>") left bottom / contain no-repeat;
+}
+.is-next .road__marker { background: var(--line); }
+/* The dino stands where Gabriel is now */
+.is-now .road__marker {
+  width: 31px;
+  background: var(--dino-c);
+  -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 84'><path fill-rule='evenodd' d='M44 0h32v4h4v20H56v8h16v4H56v8h12v4H56v8h-8v8h-8v8H24v-4H12v-8H4V48H0V28h4v12h4v8h8v-4h8v-8h8v-8h8V4h4Z M48 5h5v5h-5Z'/><path d='M24 64h8v16h8v4H24Zm16 0h8v8h8v4H44v-4h-4Z'/></svg>");
+          mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 84'><path fill-rule='evenodd' d='M44 0h32v4h4v20H56v8h16v4H56v8h12v4H56v8h-8v8h-8v8H24v-4H12v-8H4V48H0V28h4v12h4v8h8v-4h8v-8h8v-8h8V4h4Z M48 5h5v5h-5Z'/><path d='M24 64h8v16h8v4H24Zm16 0h8v8h8v4H44v-4h-4Z'/></svg>");
+}
+.road__text { margin-top: 20px; max-width: 24ch; font-size: .875rem; line-height: 1.45; color: var(--ink-2); }
+.is-next .road__text { color: var(--ink-3); }
 
 @media (max-width: 859px) {
   .hero__body { grid-template-columns: 1fr; }
   .hero__text { padding: 32px 24px 8px; }
   .hero__scene { justify-self: end; width: min(100%, 420px); padding: 0 12px 0 0; }
-  .readouts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  /* The road scrolls sideways on smaller screens */
+  .road__stops {
+    grid-template-columns: repeat(5, minmax(168px, 1fr));
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x proximity;
+    scrollbar-width: thin;
+  }
+  .road__stop { scroll-snap-align: start; }
 }
 
 @media (max-width: 480px) {
   .hero__text { padding: 28px 20px 4px; }
   .hero__actions .btn { flex: 1 1 auto; }
   .socials { margin-left: 0; }
-  .readout { padding: 14px 16px; }
   .window__bar { padding: 0 14px; gap: 10px; }
   .status-pill { padding: 4px 8px; letter-spacing: .1em; }
+  .road__range { display: none; }
 }
 
 /* 7 — Projects ----------------------------------------------------------- */

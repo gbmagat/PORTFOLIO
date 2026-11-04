@@ -28,7 +28,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..800&amp;family=JetBrains+Mono:wght@400..700&amp;display=swap">
-  <link rel="stylesheet" href="assets/css/main.css?v=4">
+  <link rel="stylesheet" href="assets/css/main.css?v=5">
 
   <!-- Apply the saved (or system) theme before the page paints -->
   <script>
@@ -42,7 +42,7 @@
       document.documentElement.classList.add('js');
     })();
   </script>
-  <script src="assets/js/main.js?v=4" defer></script>
+  <script src="assets/js/main.js?v=5" defer></script>
 
   <script type="application/ld+json">
   {
@@ -205,24 +205,42 @@
           </div>
         </div>
 
-        <ul class="readouts" aria-label="Quick facts">
-          <li class="readout">
-            <span class="readout__value">04</span>
-            <span class="readout__label">Live projects on the web</span>
-          </li>
-          <li class="readout">
-            <span class="readout__value">8,282</span>
-            <span class="readout__label">Road-graph nodes routed in my thesis</span>
-          </li>
-          <li class="readout">
-            <span class="readout__value">2025</span>
-            <span class="readout__label">Freelancing since — React sites for SMEs</span>
-          </li>
-          <li class="readout">
-            <span class="readout__value">2027</span>
-            <span class="readout__label">Expected graduation, BS Computer Science</span>
-          </li>
-        </ul>
+        <!-- The road so far: milestones on the desert ground. The dino stands on the current year
+             (main.js updates is-past / is-now / is-next from today's date). -->
+        <div class="window road">
+          <div class="window__bar">
+            <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <h2 class="window__title">gbmagat / the road so far</h2>
+            <span class="road__range" aria-hidden="true">2023 → 2027</span>
+          </div>
+          <ol class="road__stops">
+            <li class="road__stop is-past" data-road-year="2023">
+              <span class="road__year">2023</span>
+              <span class="road__marker" aria-hidden="true"></span>
+              <span class="road__text">Started BS Computer Science at Holy Angel University</span>
+            </li>
+            <li class="road__stop is-past" data-road-year="2024">
+              <span class="road__year">2024</span>
+              <span class="road__marker" aria-hidden="true"></span>
+              <span class="road__text">Dean's Lister, and built MOPAC — my first website</span>
+            </li>
+            <li class="road__stop is-past" data-road-year="2025">
+              <span class="road__year">2025</span>
+              <span class="road__marker" aria-hidden="true"></span>
+              <span class="road__text">Started freelancing: React sites and Linux servers for small businesses</span>
+            </li>
+            <li class="road__stop is-now" data-road-year="2026">
+              <span class="road__year">2026</span>
+              <span class="road__marker" aria-hidden="true"></span>
+              <span class="road__text">Built JobFinder for my undergraduate thesis</span>
+            </li>
+            <li class="road__stop is-next" data-road-year="2027">
+              <span class="road__year">2027</span>
+              <span class="road__marker" aria-hidden="true"></span>
+              <span class="road__text">Graduating with a BS in Computer Science</span>
+            </li>
+          </ol>
+        </div>
       </div>
     </section>
 

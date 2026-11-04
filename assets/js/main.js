@@ -271,6 +271,15 @@
     termObserver.observe(terminal);
   }
 
+  /* ---------- The road so far: put the dino on the current year ---------- */
+  var thisYear = new Date().getFullYear();
+  forEach(document.querySelectorAll('.road__stop[data-road-year]'), function (stop) {
+    var year = parseInt(stop.getAttribute('data-road-year'), 10);
+    stop.classList.toggle('is-past', year < thisYear);
+    stop.classList.toggle('is-now', year === thisYear);
+    stop.classList.toggle('is-next', year > thisYear);
+  });
+
   /* ---------- Divider: seamless scrolling row (data-marquee = speed in px/s) ---------- */
   forEach(document.querySelectorAll('[data-marquee]'), function (row) {
     var track = row.firstElementChild;
