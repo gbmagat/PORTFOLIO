@@ -187,12 +187,10 @@
   }
 
   /* ---------- Case study dialogs ---------- */
-  var lastTrigger = null;
-
   function openCase(id, trigger) {
     var dialog = document.getElementById(id);
     if (!dialog || typeof dialog.showModal !== 'function') return false;
-    lastTrigger = trigger || null;
+    dialog.returnFocusTo = trigger || null; // each dialog remembers its own opener
     if (!dialog.open) dialog.showModal();
     var scroller = dialog.querySelector('.case__scroll');
     if (scroller) scroller.scrollTop = 0;
@@ -209,8 +207,9 @@
       if (history.replaceState && location.hash === '#' + dialog.id) {
         history.replaceState(null, '', location.pathname + location.search);
       }
-      if (lastTrigger && document.body.contains(lastTrigger)) lastTrigger.focus();
-      lastTrigger = null;
+      var opener = dialog.returnFocusTo;
+      dialog.returnFocusTo = null;
+      if (opener && document.body.contains(opener)) opener.focus();
     });
   });
 
@@ -220,19 +219,25 @@
   function copyText(text) {
     var done = function () { toast('Email copied: ' + text); };
     var fail = function () { toast('Couldn’t copy. Email: ' + text); };
+    // Older method, used when the Clipboard API is missing or refuses
+    var legacyCopy = function () {
+      var area = document.createElement('textarea');
+      area.value = text;
+      area.setAttribute('readonly', '');
+      area.style.position = 'fixed';
+      area.style.opacity = '0';
+      document.body.appendChild(area);
+      area.select();
+      var ok = false;
+      try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+      document.body.removeChild(area);
+      if (ok) done(); else fail();
+    };
     if (navigator.clipboard && window.isSecureContext) {
-      navigator.clipboard.writeText(text).then(done, fail);
-      return;
+      navigator.clipboard.writeText(text).then(done, legacyCopy);
+    } else {
+      legacyCopy();
     }
-    var area = document.createElement('textarea');
-    area.value = text;
-    area.setAttribute('readonly', '');
-    area.style.position = 'fixed';
-    area.style.opacity = '0';
-    document.body.appendChild(area);
-    area.select();
-    try { if (document.execCommand('copy')) done(); else fail(); } catch (e) { fail(); }
-    document.body.removeChild(area);
   }
 
   /* ---------- One click handler for buttons with data attributes ---------- */
@@ -331,6 +336,7 @@
       ['His résumé', 'resume'],
       ['Message Gabriel', 'message']
     ];
+    var CANCEL = [['Cancel', 'cancel']]; // offered at every step of writing a message
 
     if (chatNote) {
       chatNote.textContent = CHAT.web3formsKey
@@ -395,10 +401,14 @@
       });
     }
 
-    function ready(chips, placeholder) {
+    // field: 'name' | 'email' | undefined — sets the right phone keyboard and autofill for each step
+    function ready(chips, placeholder, field) {
       busy = false;
       setChips(chips);
       chatInput.placeholder = placeholder || 'Type a message…';
+      chatInput.setAttribute('inputmode', field === 'email' ? 'email' : 'text');
+      chatInput.setAttribute('autocomplete', field === 'name' ? 'name' : field === 'email' ? 'email' : 'off');
+      chatInput.setAttribute('autocapitalize', field === 'email' ? 'off' : 'sentences');
       chatLog.scrollTop = chatLog.scrollHeight; // chips take space, so keep the newest reply in view
     }
 
@@ -406,6 +416,12 @@
       busy = true;
       setChips([]);
       if (action === 'message') { startMessage(''); return; }
+      if (action === 'cancel') {
+        chatState = 'menu';
+        draft = { name: '', email: '', message: '' };
+        say('No problem — nothing was sent. Anything else?').then(function () { ready(MENU); });
+        return;
+      }
       var replies = {
         about: 'Gabriel is a fourth-year Computer Science student at Holy Angel University and a freelance web developer since 2025. He builds full-stack web apps with React, Node.js, and SQL, then deploys them on Linux servers.',
         stack: 'His main tools are React, Next.js, TypeScript, Node.js, Express, MySQL, PostgreSQL, and SQLite — plus Linux, nginx, AWS, and Docker for deployment.',
@@ -447,27 +463,27 @@
       draft = { name: '', email: '', message: prefill || '' };
       chatState = 'name';
       say(prefill ? 'I’ll pass that on to Gabriel. First, what’s your name?' : 'Sure! What’s your name?')
-        .then(function () { ready([], 'Your name'); });
+        .then(function () { ready(CANCEL, 'Your name', 'name'); });
     }
 
     function onName(value) {
       draft.name = value.slice(0, 80);
       chatState = 'email';
       say('Nice to meet you, ' + draft.name + '! What’s your email address, so Gabriel can reply?')
-        .then(function () { ready([], 'you@example.com'); });
+        .then(function () { ready(CANCEL, 'you@example.com', 'email'); });
     }
 
     function onEmail(value) {
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value)) {
         say('Hmm, that doesn’t look like an email address. Could you check it?')
-          .then(function () { ready([], 'you@example.com'); });
+          .then(function () { ready(CANCEL, 'you@example.com', 'email'); });
         return;
       }
       draft.email = value.slice(0, 120);
       if (draft.message) { send(); return; }
       chatState = 'message';
       say('Got it. What would you like to tell Gabriel?')
-        .then(function () { ready([], 'Your message'); });
+        .then(function () { ready(CANCEL, 'Your message'); });
     }
 
     function mailtoHref() {

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, interactive-widget=resizes-content">
   <title>Gabriel Magat Jr. — Full-Stack Developer &amp; CS Student</title>
   <meta name="description" content="Portfolio of Gabriel B. Magat Jr., a Computer Science student at Holy Angel University who builds full-stack web apps with React, Node.js, and SQL, and deploys them on Linux servers.">
   <meta name="author" content="Gabriel B. Magat Jr.">
@@ -28,7 +28,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..800&amp;family=JetBrains+Mono:wght@400..700&amp;display=swap">
-  <link rel="stylesheet" href="assets/css/main.css?v=6">
+  <link rel="stylesheet" href="assets/css/main.css?v=7">
 
   <!-- Apply the saved (or system) theme before the page paints -->
   <script>
@@ -42,7 +42,7 @@
       document.documentElement.classList.add('js');
     })();
   </script>
-  <script src="assets/js/main.js?v=6" defer></script>
+  <script src="assets/js/main.js?v=7" defer></script>
 
   <script type="application/ld+json">
   {
@@ -144,7 +144,11 @@
             <div class="hero__text">
               <p class="hero__hello">Hello, I'm</p>
               <h1 class="hero__name" id="hero-name">Gabriel Magat Jr.</h1>
-              <p class="hero__role">Computer Science student <span aria-hidden="true">·</span> Full-stack development <span aria-hidden="true">·</span> Cloud computing</p>
+              <!-- One line: the full version shows when it fits; narrow screens get the short version -->
+              <p class="hero__role">
+                <span class="hero__role-full">Computer Science student <span class="sep" aria-hidden="true">·</span> Full-stack <span class="sep" aria-hidden="true">·</span> Cloud <span class="sep" aria-hidden="true">·</span> AI engineering</span>
+                <span class="hero__role-short" aria-hidden="true">CS student <span class="sep">·</span> Full-stack <span class="sep">·</span> Cloud <span class="sep">·</span> AI</span>
+              </p>
               <p class="hero__lead">
                 I build web applications end to end — React interfaces, Node.js APIs, and SQL databases — and deploy them on Linux servers with nginx and HTTPS.
               </p>
@@ -201,7 +205,7 @@
 
           <div class="hero__status">
             <span>Open to opportunities</span>
-            <span class="hero__where"><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg> Pampanga, PH · <time data-local-time>PHT</time></span>
+            <span class="hero__where"><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg> Pampanga, PH · <span data-local-time>PHT</span></span>
           </div>
         </div>
 
@@ -271,7 +275,7 @@
     <section class="section" id="projects" data-label="projects" aria-labelledby="projects-title">
       <div class="container">
         <header class="section-head" data-reveal>
-          <p class="eyebrow"><span class="eyebrow__num">01</span> gbmagat / projects</p>
+          <p class="eyebrow">gbmagat / projects</p>
           <h2 id="projects-title">Selected work</h2>
           <p>Things I've designed, built, and shipped — each one live on the web, with its source code on GitHub.</p>
         </header>
@@ -453,7 +457,7 @@
     <section class="section" id="about" data-label="about" aria-labelledby="about-title">
       <div class="container">
         <header class="section-head" data-reveal>
-          <p class="eyebrow"><span class="eyebrow__num">02</span> gbmagat / about</p>
+          <p class="eyebrow">gbmagat / about</p>
           <h2 id="about-title">About me</h2>
         </header>
 
@@ -526,7 +530,7 @@
     <section class="section" id="experience" data-label="experience" aria-labelledby="experience-title">
       <div class="container">
         <header class="section-head" data-reveal>
-          <p class="eyebrow"><span class="eyebrow__num">03</span> gbmagat / experience</p>
+          <p class="eyebrow">gbmagat / experience</p>
           <h2 id="experience-title">Experience &amp; education</h2>
         </header>
 
@@ -623,7 +627,7 @@
     <section class="section" id="stack" data-label="stack" aria-labelledby="stack-title">
       <div class="container">
         <header class="section-head" data-reveal>
-          <p class="eyebrow"><span class="eyebrow__num">04</span> gbmagat / stack</p>
+          <p class="eyebrow">gbmagat / stack</p>
           <h2 id="stack-title">Tech stack &amp; tools</h2>
           <p>Technologies I've used in freelance work, academic projects, and coursework.</p>
         </header>
@@ -698,7 +702,7 @@
           </div>
           <div class="contact__body">
             <div class="contact__text">
-              <p class="eyebrow"><span class="eyebrow__num">05</span> Contact</p>
+              <p class="eyebrow">Contact</p>
               <h2 id="contact-title">Let's connect.</h2>
               <p>Have a project, an opportunity, or a question? My inbox is open — I'm always happy to talk about web development, deployment, and cloud computing.</p>
               <div class="contact__actions">
@@ -968,7 +972,7 @@
       <form class="chat__form" data-chat-form>
         <label class="sr-only" for="chat-input">Your message</label>
         <textarea id="chat-input" rows="1" maxlength="2000" placeholder="Type a message…" data-chat-input></textarea>
-        <input class="chat__hp" type="checkbox" name="botcheck" tabindex="-1" autocomplete="off">
+        <input class="chat__hp" type="checkbox" name="botcheck" tabindex="-1">
         <button class="chat__send" type="submit" aria-label="Send message"><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></button>
       </form>
       <p class="chat__note" data-chat-note>Messages reach Gabriel by email.</p>

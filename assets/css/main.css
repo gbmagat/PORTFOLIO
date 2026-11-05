@@ -174,14 +174,6 @@ strong, b { font-weight: 700; }
   text-transform: uppercase;
   color: var(--label);
 }
-.eyebrow__num {
-  padding: 5px 8px 5px 11px;
-  border-radius: 3px;
-  background: var(--butter-c);
-  color: var(--butter-ink);
-  box-shadow: inset 3px 0 0 var(--accent);
-  letter-spacing: .08em;
-}
 
 .subhead {
   display: flex;
@@ -510,7 +502,10 @@ strong, b { font-weight: 700; }
   grid-template-columns: minmax(0, 1.12fr) minmax(0, .88fr);
   column-gap: 16px;
 }
-.hero__text { padding: clamp(36px, 5vw, 64px) 0 clamp(28px, 4vw, 44px) clamp(24px, 5vw, 60px); }
+.hero__text {
+  container-type: inline-size; /* lets the tagline size itself to this column */
+  padding: clamp(36px, 5vw, 64px) 0 clamp(28px, 4vw, 44px) clamp(24px, 5vw, 60px);
+}
 .hero__hello {
   font-size: .875rem;
   font-weight: 800;
@@ -525,8 +520,28 @@ strong, b { font-weight: 700; }
   letter-spacing: -.045em;
   line-height: .98;
 }
-.hero__role { margin-top: 18px; font-size: clamp(1rem, 1.6vw, 1.125rem); font-weight: 700; color: var(--ink); }
-.hero__role span { padding: 0 .15em; color: var(--accent); }
+/* Tagline: always one line. It scales with the column; narrow columns switch to the short version. */
+.hero__role {
+  margin-top: 18px;
+  font-size: clamp(.9375rem, 3cqi, 1.125rem);
+  font-weight: 700;
+  white-space: nowrap;
+  color: var(--ink);
+}
+.hero__role .sep { padding: 0 .15em; color: var(--accent); }
+.hero__role-short { display: none; }
+@container (max-width: 480px) {
+  .hero__role { font-size: clamp(.8125rem, 5.2cqi, 1.125rem); }
+  .hero__role-full {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+  .hero__role-short { display: inline; }
+}
 .hero__lead { margin-top: 14px; max-width: 54ch; font-size: clamp(1rem, 1.5vw, 1.125rem); color: var(--ink-2); }
 .hero__lead strong { color: var(--ink); }
 .hero__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 28px; }
@@ -1371,7 +1386,7 @@ strong, b { font-weight: 700; }
   border-radius: 12px;
   background: var(--surface);
   color: var(--ink);
-  font: 400 .9375rem/1.4 var(--font-sans);
+  font: 400 1rem/1.4 var(--font-sans); /* 16px+ stops iPhones zooming in when the box is tapped */
 }
 .chat__form textarea::placeholder { color: var(--ink-3); }
 .chat__form textarea:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
@@ -1391,11 +1406,23 @@ strong, b { font-weight: 700; }
 .chat__hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
 .chat__note { margin: 0; padding: 0 14px 10px; background: var(--bar); font: 500 .6875rem/1.4 var(--font-mono); letter-spacing: .03em; color: var(--ink-3); }
 
+/* Keep the Chat button out of the way of the open mobile menu */
+.nav-open .chat-launcher { display: none; }
+
 @media (max-width: 560px) {
   .chat__panel { inset: 0; width: 100%; height: 100%; height: 100dvh; border: 0; border-radius: 0; }
   .chat-open .chat-launcher { display: none; }
   html.chat-open { overflow: hidden; }
   .chat-launcher { height: 50px; padding: 0 12px 0 16px; }
+}
+
+@media print {
+  .chat, .toast, .skip-link { display: none !important; }
+  /* Sections that haven't faded in yet must still print */
+  .reveal-ready [data-reveal] { opacity: 1 !important; transform: none !important; }
+  /* The contact terminal prints fully typed out */
+  .terminal.is-armed .t-line { opacity: 1 !important; animation: none !important; }
+  .terminal .t-cmd { width: auto !important; animation: none !important; }
 }
 
 /* 17 — Motion ------------------------------------------------------------ */
