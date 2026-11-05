@@ -332,7 +332,6 @@
       ['What does Gabriel do?', 'about'],
       ['Show me projects', 'projects'],
       ['Is he available?', 'available'],
-      ['His résumé', 'resume'],
       ['Message Gabriel', 'message']
     ];
     var CANCEL = [['Cancel', 'cancel']]; // offered at every step of writing a message
@@ -437,10 +436,6 @@
             row.appendChild(b);
           });
         },
-        resume: function (el) {
-          addText(el, 'Here’s his résumé — you can save it as a PDF from that page.');
-          addLink(linkRow(el), 'Open résumé', 'resume.html', false, 'msg__link');
-        },
         contact: function (el) {
           addText(el, 'You can message him right here, email ');
           addLink(el, CHAT.email, 'mailto:' + CHAT.email);
@@ -450,7 +445,7 @@
         }
       };
       var next = action === 'available'
-        ? [['Message Gabriel', 'message'], ['Show me projects', 'projects'], ['His résumé', 'resume']]
+        ? [['Message Gabriel', 'message'], ['Show me projects', 'projects']]
         : MENU;
       say(replies[action] || replies.hello).then(function () { ready(next); });
     }
@@ -534,7 +529,6 @@
     // Short questions get an instant answer; anything else is passed on to Gabriel
     function route(value) {
       if (value.split(/\s+/).length <= 5) {
-        if (/r[eé]sum|\bcv\b/i.test(value)) return run('resume');
         if (/project|portfolio|thesis|jobfinder/i.test(value)) return run('projects');
         if (/skill|stack|tech|language|framework|\btools?\b/i.test(value)) return run('stack');
         if (/hire|hiring|availab|freelance|intern|opportunit|\bjobs?\b/i.test(value)) return run('available');
@@ -610,11 +604,6 @@
     // A link to .../#chat opens the chat straight away
     if (location.hash === '#chat') openChat();
   }
-
-  /* ---------- Résumé: print / save as PDF ---------- */
-  forEach(document.querySelectorAll('[data-print]'), function (btn) {
-    btn.addEventListener('click', function () { window.print(); });
-  });
 
   /* ---------- Footer year ---------- */
   forEach(document.querySelectorAll('[data-year]'), function (el) {

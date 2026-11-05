@@ -28,7 +28,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..800&amp;family=JetBrains+Mono:wght@400..700&amp;display=swap">
-  <link rel="stylesheet" href="assets/css/main.css?v=9">
+  <link rel="stylesheet" href="assets/css/main.css?v=10">
 
   <!-- Apply the saved (or system) theme before the page paints -->
   <script>
@@ -42,7 +42,7 @@
       document.documentElement.classList.add('js');
     })();
   </script>
-  <script src="assets/js/main.js?v=9" defer></script>
+  <script src="assets/js/main.js?v=10" defer></script>
 
   <script type="application/ld+json">
   {
@@ -76,9 +76,7 @@
     <symbol id="i-arrow-up" viewBox="0 0 16 16"><path d="M7 4h2v10H7Z M3 6h2v2H3Z M5 4h2v2H5Z M7 2h2v2H7Z M9 4h2v2H9Z M11 6h2v2h-2Z"/></symbol>
     <symbol id="i-lock" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M5 2h6v1H5Z M4 3h1v4H4Z M11 3h1v4h-1Z M3 7h10v7H3Z M7 9h2v3H7Z"/></symbol>
     <symbol id="i-copy" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M5 1h9v9H5Z M6 2h7v7H6Z M2 5h2v1H3v8h8v-1h1v2H2Z"/></symbol>
-    <symbol id="i-check" viewBox="0 0 16 16"><path d="M2 8h2v2H2Z M4 10h2v2H4Z M6 8h2v2H6Z M8 6h2v2H8Z M10 4h2v2h-2Z M12 2h2v2h-2Z"/></symbol>
-    <symbol id="i-file" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M3 1h7v1h1v1h1v1h1v11H3Z M4 2v12h8V5H9V2Z M5 7h6v1H5Z M5 9h6v1H5Z M5 11h4v1H5Z"/></symbol>
-    <symbol id="i-pin" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M6 1h4v1h1v1h1v4h-1v2h-1v2H9v2H7v-2H6V9H5V7H4V3h1V2h1Z M7 4h2v2H7Z"/></symbol>
+    <symbol id="i-check" viewBox="0 0 16 16"><path d="M2 8h2v2H2Z M4 10h2v2H4Z M6 8h2v2H6Z M8 6h2v2H8Z M10 4h2v2h-2Z M12 2h2v2h-2Z"/></symbol>    <symbol id="i-pin" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M6 1h4v1h1v1h1v4h-1v2h-1v2H9v2H7v-2H6V9H5V7H4V3h1V2h1Z M7 4h2v2H7Z"/></symbol>
     <symbol id="i-mail" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1 3h14v10H1Z M2 4h12v8H2Z M2 4h1v1H2Z M3 5h1v1H3Z M4 6h1v1H4Z M5 7h1v1H5Z M6 8h1v1H6Z M7 9h2v1H7Z M9 8h1v1H9Z M10 7h1v1h-1Z M11 6h1v1h-1Z M12 5h1v1h-1Z M13 4h1v1h-1Z"/></symbol>
     <symbol id="i-monitor" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1 2h14v10H1Z M2 3h12v8H2Z M4 5h1v1H4Z M5 6h1v1H5Z M4 7h1v1H4Z M7 7h3v1H7Z M7 12h2v2H7Z M4 14h8v1H4Z"/></symbol>
     <symbol id="i-database" viewBox="0 0 16 16"><path d="M4 1h8v1H4Z M2 2h2v1H2Z M12 2h2v1h-2Z M1 3h1v10H1Z M14 3h1v10h-1Z M2 4h2v1H2Z M12 4h2v1h-2Z M4 5h8v1H4Z M2 8h2v1H2Z M12 8h2v1h-2Z M4 9h8v1H4Z M2 13h2v1H2Z M12 13h2v1h-2Z M4 14h8v1H4Z"/></symbol>
@@ -106,12 +104,11 @@
 
       <nav class="nav" id="site-nav" aria-label="Primary">
         <ul>
-          <li><a href="#projects">Projects</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#experience">Experience</a></li>
+          <li><a href="#projects">Projects</a></li>
           <li><a href="#stack">Stack</a></li>
           <li><a href="#contact">Contact</a></li>
-          <li class="nav__resume"><a href="resume.html">Résumé</a></li>
         </ul>
       </nav>
 
@@ -120,7 +117,6 @@
           <svg class="icon i-moon" aria-hidden="true"><use href="#i-moon"/></svg>
           <svg class="icon i-sun" aria-hidden="true"><use href="#i-sun"/></svg>
         </button>
-        <a class="btn btn--butter btn--sm header-resume" href="resume.html">Résumé</a>
         <button class="icon-btn nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
           <svg class="icon i-menu" aria-hidden="true"><use href="#i-menu"/></svg>
           <svg class="icon i-close" aria-hidden="true"><use href="#i-close"/></svg>
@@ -154,7 +150,6 @@
               </p>
               <div class="hero__actions">
                 <a class="btn btn--primary" href="#projects">View projects <svg class="icon" aria-hidden="true"><use href="#i-arrow-down"/></svg></a>
-                <a class="btn btn--butter" href="resume.html">Résumé <svg class="icon" aria-hidden="true"><use href="#i-file"/></svg></a>
                 <ul class="socials" aria-label="Profiles">
                   <li><a class="icon-btn" href="https://github.com/gbmagat" target="_blank" rel="noopener" aria-label="GitHub (opens in a new tab)"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg></a></li>
                   <li><a class="icon-btn" href="https://www.linkedin.com/in/gabriel-magat-jr/" target="_blank" rel="noopener" aria-label="LinkedIn (opens in a new tab)"><svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg></a></li>
@@ -270,6 +265,176 @@
         </ul>
       </div>
     </div>
+
+    <!-- ============ About ============ -->
+    <section class="section" id="about" data-label="about" aria-labelledby="about-title">
+      <div class="container">
+        <header class="section-head" data-reveal>
+          <p class="eyebrow">gbmagat / about</p>
+          <h2 id="about-title">About me</h2>
+        </header>
+
+        <div class="about">
+          <aside class="window about__card" data-reveal>
+            <div class="window__bar">
+              <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+              <span class="window__title">gbmagat / avatar</span>
+            </div>
+            <!-- To use a photo instead: replace the <svg> below with
+                 <img src="assets/img/gabriel.webp" alt="Gabriel Magat Jr." width="600" height="600"> -->
+            <figure class="about__avatar">
+              <svg viewBox="0 0 80 84" role="img" aria-label="Pixel dinosaur avatar"><use href="#dino"/></svg>
+            </figure>
+            <dl class="facts">
+              <div><dt>Based in</dt><dd>Pampanga, Philippines</dd></div>
+              <div><dt>Studying</dt><dd>BS Computer Science, Holy Angel University</dd></div>
+              <div><dt>Graduating</dt><dd>2027 (expected)</dd></div>
+              <div><dt>Focus</dt><dd>Full-stack web &amp; cloud deployment</dd></div>
+            </dl>
+          </aside>
+
+          <div class="about__text" data-reveal>
+            <p class="about__intro">I'm a fourth-year Computer Science student who likes connecting the pieces — from a responsive interface and a backend API to a database and a running application on a Linux server.</p>
+            <p>Since 2025 I've worked as a freelance web developer, designing and building responsive React websites for small and medium-sized businesses — from requirements gathering through launch. I also provision Linux servers on AWS and Alibaba Cloud and set up their domains and DNS.</p>
+            <p>I'm working toward a career in cloud computing, with a focus on infrastructure and application deployment. I completed AWS Academy Cloud Foundations and used Amazon EC2 and AWS Lambda in coursework, and I keep building on that through web and Linux server projects.</p>
+            <p>Off the keyboard, I manage social media for the Holy Angel String Ensemble, where I previously served as secretary — designing graphics in Canva and Photoshop and covering performances on site.</p>
+          </div>
+        </div>
+
+        <h3 class="subhead" data-reveal>What I do</h3>
+        <ul class="caps">
+          <li class="cap" data-reveal>
+            <svg class="cap__icon" aria-hidden="true"><use href="#i-monitor"/></svg>
+            <h4>Building web applications</h4>
+            <p>Responsive interfaces, backend APIs, and dashboards with React, Next.js, Node.js, and Express.</p>
+          </li>
+          <li class="cap" data-reveal>
+            <svg class="cap__icon" aria-hidden="true"><use href="#i-database"/></svg>
+            <h4>Working with data</h4>
+            <p>MySQL, PostgreSQL, and SQLite for application records, participant tracking, and reporting.</p>
+          </li>
+          <li class="cap" data-reveal>
+            <svg class="cap__icon" aria-hidden="true"><use href="#i-server"/></svg>
+            <h4>Deploying projects</h4>
+            <p>Linux servers, SSH, nginx, systemd, domain configuration, and HTTPS with Let's Encrypt.</p>
+          </li>
+          <li class="cap" data-reveal>
+            <svg class="cap__icon" aria-hidden="true"><use href="#i-checkbox"/></svg>
+            <h4>Checking user flows</h4>
+            <p>Playwright-based checks for desktop and mobile web experiences.</p>
+          </li>
+          <li class="cap" data-reveal>
+            <svg class="cap__icon" aria-hidden="true"><use href="#i-graph"/></svg>
+            <h4>Applying computer science</h4>
+            <p>Skill matching and shortest-path algorithms, like Dijkstra on real road networks.</p>
+          </li>
+          <li class="cap" data-reveal>
+            <svg class="cap__icon" aria-hidden="true"><use href="#i-cloud"/></svg>
+            <h4>Learning cloud computing</h4>
+            <p>AWS Academy Cloud Foundations, with hands-on Amazon EC2 and AWS Lambda.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="container"><div class="ground" aria-hidden="true"></div></div>
+
+    <!-- ============ Experience ============ -->
+    <section class="section" id="experience" data-label="experience" aria-labelledby="experience-title">
+      <div class="container">
+        <header class="section-head" data-reveal>
+          <p class="eyebrow">gbmagat / experience</p>
+          <h2 id="experience-title">Experience &amp; education</h2>
+        </header>
+
+        <div class="xp">
+          <div class="xp__work">
+            <h3 class="subhead" data-reveal>Work</h3>
+            <ol class="timeline">
+              <li class="timeline__item is-current" data-reveal>
+                <p class="timeline__date">2025 — Present</p>
+                <h4 class="timeline__role">Freelance Web Developer</h4>
+                <p class="timeline__org">Independent · City of San Fernando, Pampanga</p>
+                <ul class="points">
+                  <li>Design and build responsive React websites for small and medium-sized business clients, from requirements gathering through launch.</li>
+                  <li>Provision Linux VPS instances on AWS and Alibaba Cloud, and configure domains and DNS.</li>
+                </ul>
+                <ul class="badges" aria-label="Tools">
+                  <li class="badge b-react">React</li>
+                  <li class="badge b-linux">Linux</li>
+                  <li class="badge b-aws">AWS</li>
+                  <li class="badge b-alibaba">Alibaba Cloud</li>
+                </ul>
+              </li>
+              <li class="timeline__item is-current" data-reveal>
+                <p class="timeline__date">2026 — Present</p>
+                <h4 class="timeline__role">Social Media Manager</h4>
+                <p class="timeline__org">Holy Angel String Ensemble · Holy Angel University</p>
+                <ul class="points">
+                  <li>Promote performances and recruitment, create graphics in Canva and Adobe Photoshop, and cover events on site.</li>
+                </ul>
+              </li>
+              <li class="timeline__item" data-reveal>
+                <p class="timeline__date">Jun 2025 — Apr 2026</p>
+                <h4 class="timeline__role">Secretary</h4>
+                <p class="timeline__org">Holy Angel String Ensemble · Holy Angel University</p>
+                <ul class="points">
+                  <li>Maintained minutes, records, and schedules; coordinated events and communication with officers and the performance head.</li>
+                </ul>
+              </li>
+            </ol>
+          </div>
+
+          <div class="xp__side">
+            <h3 class="subhead" data-reveal>Education</h3>
+            <article class="window edu" data-reveal>
+              <div class="edu__body">
+                <svg class="edu__icon" aria-hidden="true"><use href="#i-cap"/></svg>
+                <div>
+                  <p class="timeline__date">2023 — 2027 (expected)</p>
+                  <h4 class="timeline__role">BS Computer Science</h4>
+                  <p class="timeline__org">Holy Angel University · Angeles City, Pampanga</p>
+                  <ul class="points">
+                    <li>Dean's Lister, S.Y. 2023–2024</li>
+                    <li>Thesis: JobFinder — ontology-based skill and geographic accessibility matching</li>
+                  </ul>
+                </div>
+              </div>
+            </article>
+
+            <h3 class="subhead" data-reveal>Certifications &amp; training</h3>
+            <ul class="certs">
+              <li class="cert" data-reveal>
+                <svg class="cert__icon" aria-hidden="true"><use href="#i-award"/></svg>
+                <div><b>AWS Academy Graduate — Cloud Foundations</b><span>Amazon Web Services · Training badge</span></div>
+              </li>
+              <li class="cert" data-reveal>
+                <svg class="cert__icon" aria-hidden="true"><use href="#i-award"/></svg>
+                <div><b>Computer Systems Servicing NC II</b><span>TESDA</span></div>
+              </li>
+              <li class="cert" data-reveal>
+                <svg class="cert__icon" aria-hidden="true"><use href="#i-award"/></svg>
+                <div><b>Data Analytics Essentials</b><span>Cisco Networking Academy</span></div>
+              </li>
+              <li class="cert" data-reveal>
+                <svg class="cert__icon" aria-hidden="true"><use href="#i-award"/></svg>
+                <div><b>JavaScript Essentials 1</b><span>Cisco Networking Academy</span></div>
+              </li>
+              <li class="cert" data-reveal>
+                <svg class="cert__icon" aria-hidden="true"><use href="#i-award"/></svg>
+                <div><b>Agents and Workflows · Get Started with Codex · Extend Codex Workflows · AI Foundations</b><span>OpenAI</span></div>
+              </li>
+              <li class="cert" data-reveal>
+                <svg class="cert__icon" aria-hidden="true"><use href="#i-award"/></svg>
+                <div><b>Teaching AI Fluency · Claude 101 · AI Fluency: Framework and Foundations</b><span>Anthropic / Claude Academy</span></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container"><div class="ground" aria-hidden="true"></div></div>
 
     <!-- ============ Projects ============ -->
     <section class="section" id="projects" data-label="projects" aria-labelledby="projects-title">
@@ -447,176 +612,6 @@
             </li>
           </ul>
           <a class="archive__more" href="https://github.com/gbmagat?tab=repositories" target="_blank" rel="noopener">See all repositories on GitHub <svg class="icon" aria-hidden="true"><use href="#i-arrow-ne"/></svg></a>
-        </div>
-      </div>
-    </section>
-
-    <div class="container"><div class="ground" aria-hidden="true"></div></div>
-
-    <!-- ============ About ============ -->
-    <section class="section" id="about" data-label="about" aria-labelledby="about-title">
-      <div class="container">
-        <header class="section-head" data-reveal>
-          <p class="eyebrow">gbmagat / about</p>
-          <h2 id="about-title">About me</h2>
-        </header>
-
-        <div class="about">
-          <aside class="window about__card" data-reveal>
-            <div class="window__bar">
-              <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
-              <span class="window__title">gbmagat / avatar</span>
-            </div>
-            <!-- To use a photo instead: replace the <svg> below with
-                 <img src="assets/img/gabriel.webp" alt="Gabriel Magat Jr." width="600" height="600"> -->
-            <figure class="about__avatar">
-              <svg viewBox="0 0 80 84" role="img" aria-label="Pixel dinosaur avatar"><use href="#dino"/></svg>
-            </figure>
-            <dl class="facts">
-              <div><dt>Based in</dt><dd>Pampanga, Philippines</dd></div>
-              <div><dt>Studying</dt><dd>BS Computer Science, Holy Angel University</dd></div>
-              <div><dt>Graduating</dt><dd>2027 (expected)</dd></div>
-              <div><dt>Focus</dt><dd>Full-stack web &amp; cloud deployment</dd></div>
-            </dl>
-          </aside>
-
-          <div class="about__text" data-reveal>
-            <p class="about__intro">I'm a fourth-year Computer Science student who likes connecting the pieces — from a responsive interface and a backend API to a database and a running application on a Linux server.</p>
-            <p>Since 2025 I've worked as a freelance web developer, designing and building responsive React websites for small and medium-sized businesses — from requirements gathering through launch. I also provision Linux servers on AWS and Alibaba Cloud and set up their domains and DNS.</p>
-            <p>I'm working toward a career in cloud computing, with a focus on infrastructure and application deployment. I completed AWS Academy Cloud Foundations and used Amazon EC2 and AWS Lambda in coursework, and I keep building on that through web and Linux server projects.</p>
-            <p>Off the keyboard, I manage social media for the Holy Angel String Ensemble, where I previously served as secretary — designing graphics in Canva and Photoshop and covering performances on site.</p>
-          </div>
-        </div>
-
-        <h3 class="subhead" data-reveal>What I do</h3>
-        <ul class="caps">
-          <li class="cap" data-reveal>
-            <svg class="cap__icon" aria-hidden="true"><use href="#i-monitor"/></svg>
-            <h4>Building web applications</h4>
-            <p>Responsive interfaces, backend APIs, and dashboards with React, Next.js, Node.js, and Express.</p>
-          </li>
-          <li class="cap" data-reveal>
-            <svg class="cap__icon" aria-hidden="true"><use href="#i-database"/></svg>
-            <h4>Working with data</h4>
-            <p>MySQL, PostgreSQL, and SQLite for application records, participant tracking, and reporting.</p>
-          </li>
-          <li class="cap" data-reveal>
-            <svg class="cap__icon" aria-hidden="true"><use href="#i-server"/></svg>
-            <h4>Deploying projects</h4>
-            <p>Linux servers, SSH, nginx, systemd, domain configuration, and HTTPS with Let's Encrypt.</p>
-          </li>
-          <li class="cap" data-reveal>
-            <svg class="cap__icon" aria-hidden="true"><use href="#i-checkbox"/></svg>
-            <h4>Checking user flows</h4>
-            <p>Playwright-based checks for desktop and mobile web experiences.</p>
-          </li>
-          <li class="cap" data-reveal>
-            <svg class="cap__icon" aria-hidden="true"><use href="#i-graph"/></svg>
-            <h4>Applying computer science</h4>
-            <p>Skill matching and shortest-path algorithms, like Dijkstra on real road networks.</p>
-          </li>
-          <li class="cap" data-reveal>
-            <svg class="cap__icon" aria-hidden="true"><use href="#i-cloud"/></svg>
-            <h4>Learning cloud computing</h4>
-            <p>AWS Academy Cloud Foundations, with hands-on Amazon EC2 and AWS Lambda.</p>
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <div class="container"><div class="ground" aria-hidden="true"></div></div>
-
-    <!-- ============ Experience ============ -->
-    <section class="section" id="experience" data-label="experience" aria-labelledby="experience-title">
-      <div class="container">
-        <header class="section-head" data-reveal>
-          <p class="eyebrow">gbmagat / experience</p>
-          <h2 id="experience-title">Experience &amp; education</h2>
-        </header>
-
-        <div class="xp">
-          <div class="xp__work">
-            <h3 class="subhead" data-reveal>Work</h3>
-            <ol class="timeline">
-              <li class="timeline__item is-current" data-reveal>
-                <p class="timeline__date">2025 — Present</p>
-                <h4 class="timeline__role">Freelance Web Developer</h4>
-                <p class="timeline__org">Independent · City of San Fernando, Pampanga</p>
-                <ul class="points">
-                  <li>Design and build responsive React websites for small and medium-sized business clients, from requirements gathering through launch.</li>
-                  <li>Provision Linux VPS instances on AWS and Alibaba Cloud, and configure domains and DNS.</li>
-                </ul>
-                <ul class="badges" aria-label="Tools">
-                  <li class="badge b-react">React</li>
-                  <li class="badge b-linux">Linux</li>
-                  <li class="badge b-aws">AWS</li>
-                  <li class="badge b-alibaba">Alibaba Cloud</li>
-                </ul>
-              </li>
-              <li class="timeline__item is-current" data-reveal>
-                <p class="timeline__date">2026 — Present</p>
-                <h4 class="timeline__role">Social Media Manager</h4>
-                <p class="timeline__org">Holy Angel String Ensemble · Holy Angel University</p>
-                <ul class="points">
-                  <li>Promote performances and recruitment, create graphics in Canva and Adobe Photoshop, and cover events on site.</li>
-                </ul>
-              </li>
-              <li class="timeline__item" data-reveal>
-                <p class="timeline__date">Jun 2025 — Apr 2026</p>
-                <h4 class="timeline__role">Secretary</h4>
-                <p class="timeline__org">Holy Angel String Ensemble · Holy Angel University</p>
-                <ul class="points">
-                  <li>Maintained minutes, records, and schedules; coordinated events and communication with officers and the performance head.</li>
-                </ul>
-              </li>
-            </ol>
-          </div>
-
-          <div class="xp__side">
-            <h3 class="subhead" data-reveal>Education</h3>
-            <article class="window edu" data-reveal>
-              <div class="edu__body">
-                <svg class="edu__icon" aria-hidden="true"><use href="#i-cap"/></svg>
-                <div>
-                  <p class="timeline__date">2023 — 2027 (expected)</p>
-                  <h4 class="timeline__role">BS Computer Science</h4>
-                  <p class="timeline__org">Holy Angel University · Angeles City, Pampanga</p>
-                  <ul class="points">
-                    <li>Dean's Lister, S.Y. 2023–2024</li>
-                    <li>Thesis: JobFinder — ontology-based skill and geographic accessibility matching</li>
-                  </ul>
-                </div>
-              </div>
-            </article>
-
-            <h3 class="subhead" data-reveal>Certifications &amp; training</h3>
-            <ul class="certs">
-              <li class="cert" data-reveal>
-                <svg class="cert__icon" aria-hidden="true"><use href="#i-award"/></svg>
-                <div><b>AWS Academy Graduate — Cloud Foundations</b><span>Amazon Web Services · Training badge</span></div>
-              </li>
-              <li class="cert" data-reveal>
-                <svg class="cert__icon" aria-hidden="true"><use href="#i-award"/></svg>
-                <div><b>Computer Systems Servicing NC II</b><span>TESDA</span></div>
-              </li>
-              <li class="cert" data-reveal>
-                <svg class="cert__icon" aria-hidden="true"><use href="#i-award"/></svg>
-                <div><b>Data Analytics Essentials</b><span>Cisco Networking Academy</span></div>
-              </li>
-              <li class="cert" data-reveal>
-                <svg class="cert__icon" aria-hidden="true"><use href="#i-award"/></svg>
-                <div><b>JavaScript Essentials 1</b><span>Cisco Networking Academy</span></div>
-              </li>
-              <li class="cert" data-reveal>
-                <svg class="cert__icon" aria-hidden="true"><use href="#i-award"/></svg>
-                <div><b>Agents and Workflows · Get Started with Codex · Extend Codex Workflows · AI Foundations</b><span>OpenAI</span></div>
-              </li>
-              <li class="cert" data-reveal>
-                <svg class="cert__icon" aria-hidden="true"><use href="#i-award"/></svg>
-                <div><b>Teaching AI Fluency · Claude 101 · AI Fluency: Framework and Foundations</b><span>Anthropic / Claude Academy</span></div>
-              </li>
-            </ul>
-          </div>
         </div>
       </div>
     </section>

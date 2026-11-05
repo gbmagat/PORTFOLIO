@@ -10,11 +10,10 @@ My personal portfolio: projects, experience, skills, and contact details. It use
 
 ## What's inside
 
-- **Projects** — JobFinder (my undergraduate thesis), Our Places, It's a Match, and MOPAC, each with a case study, live link, and source code
 - **About, experience, and education** — freelance work, organization roles, and certifications
+- **Projects** — JobFinder (my undergraduate thesis), Our Places, It's a Match, and MOPAC, each with a case study, live link, and source code
 - **Tech stack** — badges that match my GitHub profile README
 - **Chat** — a floating chat where visitors can ask quick questions or send me a message
-- **Résumé page** — printable, with a one-click "Save as PDF"
 - **Day and night themes** — follows your system setting, with a toggle
 - Responsive layout, keyboard-friendly dialogs, reduced-motion support, and a custom 404 page
 
@@ -36,9 +35,8 @@ Then open http://localhost:8000.
 
 ```
 index.html          Main page
-resume.html         Printable résumé
 404.html            Custom "page not found"
-assets/css/         Styles (main.css, resume.css)
+assets/css/         Styles (main.css)
 assets/js/          Interactions (main.js)
 assets/img/         Icons, share image, and project screenshots
 ```
