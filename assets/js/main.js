@@ -301,11 +301,11 @@
   });
 
   /* ---------- Chat with Gabriel ---------- */
-  // To deliver chat messages straight to Gabriel's inbox, paste a free Web3Forms access key below
-  // (create one at https://web3forms.com with gabrielmagatjr.cs@gmail.com). While it is empty,
-  // the chat opens the visitor's own email app with the message ready to send.
+  // Chat messages go straight to Gabriel's inbox through Web3Forms (account: gabrielmagatjr.cs@gmail.com).
+  // The access key is public by design: it only tells Web3Forms which inbox to deliver to.
+  // If the key is removed or a send fails, the chat opens the visitor's own email app instead.
   var CHAT = {
-    web3formsKey: '',
+    web3formsKey: 'ca90da55-12cd-4c5a-80d1-d806c69ec733',
     email: 'gabrielmagatjr.cs@gmail.com',
     linkedin: 'https://www.linkedin.com/in/gabriel-magat-jr/'
   };
