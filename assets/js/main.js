@@ -314,7 +314,6 @@
   if (chatRoot) {
     var chatPanel = chatRoot.querySelector('.chat__panel');
     var chatToggle = chatRoot.querySelector('[data-chat-toggle]');
-    var chatBadge = chatRoot.querySelector('[data-chat-badge]');
     var chatLog = chatRoot.querySelector('[data-chat-log]');
     var chatChips = chatRoot.querySelector('[data-chat-chips]');
     var chatForm = chatRoot.querySelector('[data-chat-form]');
@@ -343,7 +342,6 @@
         ? 'Messages are delivered to Gabriel’s email.'
         : 'Messages open in your email app, addressed to Gabriel.';
     }
-    if (chatBadge && readStore('chatSeen') === '1') chatBadge.hidden = true;
 
     var addText = function (el, str) { el.appendChild(document.createTextNode(str)); };
     var addLink = function (el, label, href, external, className) {
@@ -579,8 +577,6 @@
       chatPanel.hidden = false;
       chatToggle.setAttribute('aria-expanded', 'true');
       root.classList.add('chat-open');
-      if (chatBadge) chatBadge.hidden = true;
-      writeStore('chatSeen', '1');
       if (!greeted) {
         greeted = true;
         busy = true;
