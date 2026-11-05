@@ -120,8 +120,8 @@
       <h1>This page wandered off into the desert.</h1>
       <p>The link might be broken, or the page may have moved. Here are a few ways back:</p>
       <ul>
-        <li><a class="btn btn--primary" data-home href="/PORTFOLIO/">Go home</a></li>
-        <li><a class="btn" data-home data-hash="#projects" href="/PORTFOLIO/#projects">See projects</a></li>
+        <li><a class="btn btn--primary" data-home href="/">Go home</a></li>
+        <li><a class="btn" data-home data-hash="#projects" href="/#projects">See projects</a></li>
         <li><a class="btn" href="mailto:gabrielmagatjr.cs@gmail.com">Email me</a></li>
       </ul>
     </div>
@@ -144,7 +144,7 @@
     </svg>
   </main>
   <script>
-    // Work out the site's base path (GitHub Pages serves this repo under /PORTFOLIO/)
+    // Work out the site's base path: / on gabrielmagat.dev, /PORTFOLIO/ on the GitHub Pages copy
     (function () {
       var match = location.pathname.match(/^\/portfolio\//i);
       var base = match ? match[0] : '/';

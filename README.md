@@ -6,7 +6,7 @@
 
 My personal portfolio: projects, experience, skills, and contact details. It uses the same cream "browser window" desert look as my [GitHub profile](https://github.com/gbmagat), with a sage pixel dinosaur, cacti, and drifting clouds.
 
-**Live site:** https://gbmagat.github.io/PORTFOLIO/
+**Live site:** https://gabrielmagat.dev/
 
 ## What's inside
 
@@ -20,7 +20,7 @@ My personal portfolio: projects, experience, skills, and contact details. It use
 
 ## Built with
 
-Plain HTML, CSS, and JavaScript — no framework and no build step. Hosted on GitHub Pages.
+Plain HTML, CSS, and JavaScript — no framework and no build step. Served at [gabrielmagat.dev](https://gabrielmagat.dev/); every push to `main` is published there automatically.
 
 ## Run locally
 
