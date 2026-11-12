@@ -31,8 +31,18 @@
   if (themeBtn) {
     themeBtn.addEventListener('click', function () {
       var next = root.getAttribute('data-theme') === 'night' ? 'day' : 'night';
-      applyTheme(next);
       writeStore('theme', next);
+      if (!document.startViewTransition || reduceMotion.matches) {
+        applyTheme(next);
+        return;
+      }
+      // The new theme spreads out from the button (see theme-spread in main.css)
+      var box = themeBtn.getBoundingClientRect();
+      root.style.setProperty('--vt-x', Math.round(box.left + box.width / 2) + 'px');
+      root.style.setProperty('--vt-y', Math.round(box.top + box.height / 2) + 'px');
+      root.classList.add('theme-switching');
+      var settle = function () { root.classList.remove('theme-switching'); };
+      document.startViewTransition(function () { applyTheme(next); }).finished.then(settle, settle);
     });
   }
   if (systemDark.addEventListener) {
@@ -80,10 +90,31 @@
   var navLinks = document.querySelectorAll('.nav a[href^="#"]');
   var sections = document.querySelectorAll('main section[data-label]');
 
+  // Scroll progress: a tiny dino walks along the header's bottom edge
+  var progress = document.querySelector('[data-progress]');
+  var progressFrame = 0;
+  var lastScrollY = window.scrollY;
+  var walkTimer;
+
+  function updateProgress() {
+    progressFrame = 0;
+    var y = window.scrollY;
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    progress.style.setProperty('--progress', (max > 0 ? Math.min(1, Math.max(0, y / max)) : 0).toFixed(4));
+    if (y === lastScrollY) return;
+    progress.classList.toggle('is-reversed', y < lastScrollY); // faces back when scrolling up
+    progress.classList.add('is-walking');
+    clearTimeout(walkTimer);
+    walkTimer = setTimeout(function () { progress.classList.remove('is-walking'); }, 160);
+    lastScrollY = y;
+  }
+
   function onScroll() {
     if (header) header.classList.toggle('is-scrolled', window.scrollY > 8);
+    if (progress && !progressFrame) progressFrame = requestAnimationFrame(updateProgress);
   }
   window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
   onScroll();
 
   function setCurrent(section) {
@@ -170,6 +201,35 @@
         if (e.animationName === 'hop') dino.classList.remove('is-hopping');
       });
     }
+
+    // With a mouse: the scenery shifts a little with the pointer, and the dino's eye follows it
+    var heroWindow = scene.closest('.window');
+    var mouse = window.matchMedia('(hover: hover) and (pointer: fine)');
+    if (heroWindow && dino && mouse.matches && !reduceMotion.matches) {
+      var pointer = null;
+      var pointerFrame = 0;
+      var follow = function () {
+        pointerFrame = 0;
+        var box = heroWindow.getBoundingClientRect();
+        if (!pointer || box.bottom < 0 || box.top > window.innerHeight) return; // hero is off screen
+        var px = Math.max(-1, Math.min(1, ((pointer.x - box.left) / box.width) * 2 - 1));
+        var py = Math.max(-1, Math.min(1, ((pointer.y - box.top) / box.height) * 2 - 1));
+        scene.style.setProperty('--px', px.toFixed(3));
+        scene.style.setProperty('--py', py.toFixed(3));
+        // The eye sits at about (50, 7) on the dino's 80×84 grid
+        var body = dino.getBoundingClientRect();
+        var dx = pointer.x - (body.left + body.width * 0.63);
+        var dy = pointer.y - (body.top + body.height * 0.09);
+        var distance = Math.sqrt(dx * dx + dy * dy) || 1;
+        var reach = Math.min(1, distance / 140);
+        scene.style.setProperty('--ex', String(Math.round((dx / distance) * 3 * reach)));
+        scene.style.setProperty('--ey', String(Math.round((dy / distance) * 2 * reach)));
+      };
+      window.addEventListener('pointermove', function (e) {
+        pointer = { x: e.clientX, y: e.clientY };
+        if (!pointerFrame) pointerFrame = requestAnimationFrame(follow);
+      }, { passive: true });
+    }
   }
 
   /* ---------- Local time in the Philippines ---------- */
@@ -214,6 +274,60 @@
   });
 
   if (/^#case-[\w-]+$/.test(location.hash)) openCase(location.hash.slice(1));
+
+  /* ---------- Project screenshots: the browser tabs switch the picture ---------- */
+  forEach(document.querySelectorAll('[data-shots]'), function (frame) {
+    var tabs = frame.querySelectorAll('button.browser__tab');
+    var view = frame.querySelector('.browser__view');
+    var first = view ? view.querySelector('.browser__shot') : null;
+    if (tabs.length < 2 || !first) return;
+    var shots = [first];
+    var current = 0;
+
+    // The other screenshots are only fetched once someone shows interest in the frame
+    function ensure(index) {
+      if (shots[index]) return shots[index];
+      var tab = tabs[index];
+      var img = new Image();
+      img.className = 'browser__shot';
+      img.alt = '';
+      img.decoding = 'async';
+      img.width = 1280;
+      img.height = 800;
+      if (first.sizes) img.sizes = first.sizes;
+      if (tab.getAttribute('data-srcset')) img.srcset = tab.getAttribute('data-srcset');
+      img.src = tab.getAttribute('data-src');
+      view.insertBefore(img, view.querySelector('.browser__cta'));
+      shots[index] = img;
+      return img;
+    }
+
+    function select(index) {
+      var img = ensure(index);
+      current = index;
+      forEach(tabs, function (tab, n) { tab.setAttribute('aria-pressed', String(n === index)); });
+      var show = function () {
+        if (current !== index) return;
+        shots.forEach(function (shot, n) { shot.classList.toggle('is-active', n === index); });
+      };
+      if (img.complete) show();
+      else {
+        img.addEventListener('load', show, { once: true });
+        img.addEventListener('error', show, { once: true });
+      }
+    }
+
+    forEach(tabs, function (tab, index) {
+      tab.addEventListener('click', function () { select(index); });
+    });
+    var warm = function () {
+      for (var n = 1; n < tabs.length; n++) ensure(n);
+      frame.removeEventListener('pointerenter', warm);
+      frame.removeEventListener('focusin', warm);
+    };
+    frame.addEventListener('pointerenter', warm);
+    frame.addEventListener('focusin', warm);
+  });
 
   /* ---------- Copy email ---------- */
   function copyText(text) {
@@ -422,7 +536,7 @@
       var replies = {
         about: 'Gabriel is a fourth-year Computer Science student at Holy Angel University and a freelance web developer since 2025. He builds full-stack web apps with React, Node.js, and SQL, then deploys them on Linux servers.',
         stack: 'His main tools are React, Next.js, TypeScript, Node.js, Express, MySQL, PostgreSQL, and SQLite — plus Linux, nginx, AWS, and Docker for deployment.',
-        available: 'He’s open to opportunities and freelance web projects. Leave him a message here and he’ll get back to you by email.',
+        available: 'He’s looking for an OJT / internship placement (486 hours) and is open to freelance web projects. Leave him a message here and he’ll get back to you by email.',
         hello: 'Hello! What would you like to know about Gabriel?',
         projects: function (el) {
           addText(el, 'Here are his featured projects. Tap one to read its case study:');

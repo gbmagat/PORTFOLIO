@@ -28,7 +28,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..800&amp;family=JetBrains+Mono:wght@400..700&amp;display=swap">
-  <link rel="stylesheet" href="assets/css/main.css?v=10">
+  <link rel="stylesheet" href="assets/css/main.css?v=11">
 
   <!-- Apply the saved (or system) theme before the page paints -->
   <script>
@@ -42,7 +42,7 @@
       document.documentElement.classList.add('js');
     })();
   </script>
-  <script src="assets/js/main.js?v=10" defer></script>
+  <script src="assets/js/main.js?v=11" defer></script>
 
   <script type="application/ld+json">
   {
@@ -84,6 +84,7 @@
     <symbol id="i-checkbox" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1 1h14v14H1Z M2 2h12v12H2Z M4 7h2v2H4Z M6 9h2v2H6Z M8 7h2v2H8Z M10 5h2v2h-2Z"/></symbol>
     <symbol id="i-graph" viewBox="0 0 16 16"><path d="M1 1h4v4H1Z M11 3h4v4h-4Z M3 11h4v4H3Z M5 2h3v1H5Z M8 3h3v1H8Z M2 5h1v3H2Z M3 8h1v3H3Z M7 12h2v1H7Z M9 11h1v1H9Z M10 10h1v1h-1Z M11 9h1v1h-1Z M12 7h1v2h-1Z"/></symbol>
     <symbol id="i-cloud" viewBox="0 0 16 16"><path d="M4 5h6v1h1v2h3v1h1v3H1V9h1V8h2Z"/></symbol>
+    <symbol id="i-api" viewBox="0 0 16 16"><path d="M2 4h10v2H2Z M10 2h2v2h-2Z M12 4h2v2h-2Z M10 6h2v2h-2Z M4 10h10v2H4Z M4 8h2v2H4Z M2 10h2v2H2Z M4 12h2v2H4Z"/></symbol>
     <symbol id="i-music" viewBox="0 0 16 16"><path d="M6 2h8v2H6Z M6 4h1v7H6Z M13 4h1v6h-1Z M3 10h4v3H3Z M10 9h4v3h-4Z"/></symbol>
     <symbol id="i-cap" viewBox="0 0 16 16"><path d="M7 2h2v1H7Z M5 3h6v1H5Z M3 4h10v1H3Z M1 5h14v1H1Z M3 6h10v1H3Z M5 7h6v1H5Z M7 8h2v1H7Z M4 7h1v3h6V7h1v4H4Z M14 5h1v5h-1Z"/></symbol>
     <symbol id="i-award" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M5 1h6v1h1v1h1v5h-1v1h-1v1H5V9H4V8H3V3h1V2h1Z M7 4h2v1h1v2H9v1H7V7H6V5h1Z M4 10h3v5H6v-1H5v1H4Z M9 10h3v5h-1v-1h-1v1H9Z"/></symbol>
@@ -123,6 +124,15 @@
         </button>
       </div>
     </div>
+    <!-- Scroll progress: a tiny dino walks along the header's bottom edge as the page scrolls (main.js) -->
+    <div class="progress" data-progress aria-hidden="true">
+      <span class="progress__line"></span>
+      <svg class="progress__dino" viewBox="0 0 80 84" focusable="false">
+        <path fill-rule="evenodd" d="M44 0h32v4h4v20H56v8h16v4H56v8h12v4H56v8h-8v8h-8v8H24v-4H12v-8H4V48H0V28h4v12h4v8h8v-4h8v-8h8v-8h8V4h4Z M48 5h5v5h-5Z"/>
+        <path class="progress__legs progress__legs--a" d="M24 64h8v16h8v4H24Zm16 0h8v8h8v4H44v-4h-4Z"/>
+        <path class="progress__legs progress__legs--b" d="M24 64h8v8h8v4H28v-4h-4Zm16 0h8v16h8v4H40Z"/>
+      </svg>
+    </div>
   </header>
 
   <main id="main">
@@ -150,10 +160,10 @@
               </p>
               <div class="hero__actions">
                 <a class="btn btn--primary" href="#projects">View projects <svg class="icon" aria-hidden="true"><use href="#i-arrow-down"/></svg></a>
+                <a class="btn btn--butter" href="#contact">Contact me <svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg></a>
                 <ul class="socials" aria-label="Profiles">
                   <li><a class="icon-btn" href="https://github.com/gbmagat" target="_blank" rel="noopener" aria-label="GitHub (opens in a new tab)"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg></a></li>
                   <li><a class="icon-btn" href="https://www.linkedin.com/in/gabriel-magat-jr/" target="_blank" rel="noopener" aria-label="LinkedIn (opens in a new tab)"><svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg></a></li>
-                  <li><a class="icon-btn" href="mailto:gabrielmagatjr.cs@gmail.com" aria-label="Email gabrielmagatjr.cs@gmail.com"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg></a></li>
                 </ul>
               </div>
             </div>
@@ -161,6 +171,7 @@
             <div class="hero__scene">
               <button class="scene" type="button" data-dino aria-label="Say hi to the dinosaur">
                 <svg class="scene__svg" viewBox="0 0 480 250" aria-hidden="true" focusable="false">
+                  <use class="scene__sun" href="#i-sun" x="422" y="12" width="32" height="32"/>
                   <g class="scene__night">
                     <use class="scene__moon" href="#i-moon" x="424" y="12" width="30" height="30"/>
                     <g class="scene__stars">
@@ -174,19 +185,29 @@
                       <rect x="400" y="120" width="3" height="3"/>
                     </g>
                   </g>
-                  <g class="scene__clouds" fill="none" stroke-width="2">
-                    <path class="cloud cloud--a" d="M150 64h18v-12h36v12h24v12h-78Z"/>
-                    <path class="cloud cloud--b" d="M330 40h18v-12h30v12h18v9h-66Z"/>
-                    <path class="cloud cloud--c" d="M20 36h12v-8h24v8h16v8H20Z"/>
+                  <!-- Three layers shift a little with the pointer (main.js): far mesas, clouds, then cacti -->
+                  <g class="layer layer--far">
+                    <path class="scene__mesa" d="M286 250v-10h10v-10h12v-12h14v-8h72v8h10v10h14v-6h40v6h12v12h10v10Z"/>
+                    <path class="scene__mesa" d="M0 250v-14h14v-10h44v10h12v8h10v6Z"/>
                   </g>
-                  <g class="scene__cacti" shape-rendering="crispEdges" transform="translate(-75 101.5) scale(1.5)">
-                    <path d="M264 37h12v62h-12Zm-14 18h8v20h6v8h-12v-4h-2Zm32-6h8v30h-4v4h-10v-8h6Z"/>
-                    <path d="M324 62h9v37h-9Zm-10 8h6v12h4v6h-8v-3h-2Zm25-5h6v20h-3v3h-9v-6h6Z"/>
+                  <g class="layer layer--mid">
+                    <g class="scene__clouds" fill="none" stroke-width="2">
+                      <path class="cloud cloud--a" d="M150 64h18v-12h36v12h24v12h-78Z"/>
+                      <path class="cloud cloud--b" d="M330 40h18v-12h30v12h18v9h-66Z"/>
+                      <path class="cloud cloud--c" d="M20 36h12v-8h24v8h16v8H20Z"/>
+                    </g>
+                  </g>
+                  <g class="layer layer--near">
+                    <g class="scene__cacti" shape-rendering="crispEdges" transform="translate(-75 101.5) scale(1.5)">
+                      <path d="M264 37h12v62h-12Zm-14 18h8v20h6v8h-12v-4h-2Zm32-6h8v30h-4v4h-10v-8h6Z"/>
+                      <path d="M324 62h9v37h-9Zm-10 8h6v12h4v6h-8v-3h-2Zm25-5h6v20h-3v3h-9v-6h6Z"/>
+                    </g>
                   </g>
                   <g class="dino">
                     <g transform="translate(60 124) scale(1.5)" shape-rendering="crispEdges">
                       <path class="dino__body" d="M44 0h32v4h4v20H56v8h16v4H56v8h12v4H56v8h-8v8h-8v8H24v-4H12v-8H4V48H0V28h4v12h4v8h8v-4h8v-8h8v-8h8V4h4Z"/>
-                      <rect class="dino__eye" x="48" y="5" width="5" height="5"/>
+                      <!-- The eye follows the pointer by a pixel or two (main.js) -->
+                      <g class="dino__look"><rect class="dino__eye" x="48" y="5" width="5" height="5"/></g>
                       <path class="dino__body" d="M24 64h8v16h8v4H24Zm16 0h8v8h8v4H44v-4h-4Z"/>
                     </g>
                   </g>
@@ -199,7 +220,7 @@
           </div>
 
           <div class="hero__status">
-            <span>Open to opportunities</span>
+            <a class="hero__open" href="#contact">Open to OJT / internship <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
             <span class="hero__where"><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg> Pampanga, PH · <span data-local-time>PHT</span></span>
           </div>
         </div>
@@ -301,23 +322,58 @@
           </div>
         </div>
 
-        <h3 class="subhead" data-reveal>What I do</h3>
+        <h3 class="subhead" data-reveal>How I build</h3>
+        <!-- One request's path through the stack. The moving dot is decorative (CSS). -->
+        <div class="window pipe" data-reveal>
+          <div class="window__bar">
+            <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="window__title">gbmagat / end-to-end</span>
+            <span class="road__range" aria-hidden="true">interface → server</span>
+          </div>
+          <ol class="pipe__steps">
+            <li class="pipe__step">
+              <span class="pipe__node" aria-hidden="true"><svg class="pipe__icon"><use href="#i-monitor"/></svg></span>
+              <h4>Interface</h4>
+              <p>Responsive pages and dashboards that work on phones and desktops.</p>
+              <ul class="badges" aria-label="Tools">
+                <li class="badge b-react">React</li>
+                <li class="badge b-nextjs">Next.js</li>
+                <li class="badge b-typescript">TypeScript</li>
+              </ul>
+            </li>
+            <li class="pipe__step">
+              <span class="pipe__node" aria-hidden="true"><svg class="pipe__icon"><use href="#i-api"/></svg></span>
+              <h4>API</h4>
+              <p>Backend endpoints with input validation, sign-in, and rate limiting.</p>
+              <ul class="badges" aria-label="Tools">
+                <li class="badge b-node">Node.js</li>
+                <li class="badge b-express">Express</li>
+                <li class="badge b-zod">Zod</li>
+              </ul>
+            </li>
+            <li class="pipe__step">
+              <span class="pipe__node" aria-hidden="true"><svg class="pipe__icon"><use href="#i-database"/></svg></span>
+              <h4>Database</h4>
+              <p>Tables and queries for application records, tracking, and reports.</p>
+              <ul class="badges" aria-label="Tools">
+                <li class="badge b-postgresql">PostgreSQL</li>
+                <li class="badge b-mysql">MySQL</li>
+                <li class="badge b-sqlite">SQLite</li>
+              </ul>
+            </li>
+            <li class="pipe__step">
+              <span class="pipe__node" aria-hidden="true"><svg class="pipe__icon"><use href="#i-server"/></svg></span>
+              <h4>Server</h4>
+              <p>Linux servers with domains, HTTPS, and services that restart on their own.</p>
+              <ul class="badges" aria-label="Tools">
+                <li class="badge b-linux">Linux</li>
+                <li class="badge b-nginx">Nginx</li>
+                <li class="badge b-aws">AWS</li>
+              </ul>
+            </li>
+          </ol>
+        </div>
         <ul class="caps">
-          <li class="cap" data-reveal>
-            <svg class="cap__icon" aria-hidden="true"><use href="#i-monitor"/></svg>
-            <h4>Building web applications</h4>
-            <p>Responsive interfaces, backend APIs, and dashboards with React, Next.js, Node.js, and Express.</p>
-          </li>
-          <li class="cap" data-reveal>
-            <svg class="cap__icon" aria-hidden="true"><use href="#i-database"/></svg>
-            <h4>Working with data</h4>
-            <p>MySQL, PostgreSQL, and SQLite for application records, participant tracking, and reporting.</p>
-          </li>
-          <li class="cap" data-reveal>
-            <svg class="cap__icon" aria-hidden="true"><use href="#i-server"/></svg>
-            <h4>Deploying projects</h4>
-            <p>Linux servers, SSH, nginx, systemd, domain configuration, and HTTPS with Let's Encrypt.</p>
-          </li>
           <li class="cap" data-reveal>
             <svg class="cap__icon" aria-hidden="true"><use href="#i-checkbox"/></svg>
             <h4>Checking user flows</h4>
@@ -452,48 +508,67 @@
         <div class="projects">
           <!-- JobFinder -->
           <article class="project project--featured" id="jobfinder" data-reveal>
-            <button class="project__media browser" type="button" data-open="case-jobfinder" aria-label="Open the JobFinder case study">
-              <span class="browser__bar" aria-hidden="true">
-                <span class="dots"><i></i><i></i><i></i></span>
-                <span class="browser__url"><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg>jobfinderangeles.site</span>
-              </span>
-              <img class="browser__shot" src="assets/img/projects/jobfinder-search-1280.webp" srcset="assets/img/projects/jobfinder-search-640.webp 640w, assets/img/projects/jobfinder-search-1280.webp 1280w" sizes="(min-width: 960px) 620px, 100vw" width="1280" height="800" loading="lazy" decoding="async" alt="JobFinder's search page: job listings in Angeles City beside an OpenStreetMap map.">
-            </button>
+            <!-- Browser frame: the tabs switch screenshots (main.js); the picture opens the case study -->
+            <div class="project__media browser" data-shots>
+              <div class="browser__bar">
+                <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                <div class="browser__tabs" role="group" aria-label="JobFinder screenshots">
+                  <button class="browser__tab" type="button" aria-pressed="true">Jobs</button>
+                  <button class="browser__tab" type="button" aria-pressed="false" data-src="assets/img/projects/jobfinder-roadgraph-1280.webp" data-srcset="assets/img/projects/jobfinder-roadgraph-640.webp 640w, assets/img/projects/jobfinder-roadgraph-1280.webp 1280w, assets/img/projects/jobfinder-roadgraph-1920.webp 1920w">Road graph</button>
+                </div>
+                <span class="browser__url" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg>jobfinderangeles.site</span>
+              </div>
+              <button class="browser__view" type="button" data-open="case-jobfinder" aria-label="Open the JobFinder case study">
+                <img class="browser__shot is-active" src="assets/img/projects/jobfinder-jobs-1280.webp" srcset="assets/img/projects/jobfinder-jobs-640.webp 640w, assets/img/projects/jobfinder-jobs-1280.webp 1280w, assets/img/projects/jobfinder-jobs-1920.webp 1920w" sizes="(min-width: 1260px) 1176px, calc(100vw - 36px)" width="1280" height="800" loading="lazy" decoding="async" alt="JobFinder's job list for Angeles City beside an OpenStreetMap map.">
+                <span class="browser__cta" aria-hidden="true">Case study <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
+              </button>
+            </div>
             <div class="project__body">
-              <p class="project__kicker"><span class="tag">Featured</span> Undergraduate thesis · 2026</p>
-              <h3 class="project__title">JobFinder</h3>
-              <p class="project__subtitle">Job matching for Angeles City, ranked by real road distance.</p>
-              <p class="project__desc">A full-stack platform for job seekers, employers, and PESO administrators that pairs ontology-based skill matching with shortest-path routing on the city's road network.</p>
-              <ul class="points">
-                <li>Dijkstra's algorithm written from scratch with a custom binary min-heap over an 8,282-node OpenStreetMap road graph</li>
-                <li>Zod validation, Helmet security headers, rate limiting, and scrypt password hashing</li>
-                <li>Runs on a Linux VPS with nginx, systemd, and auto-renewing Let's Encrypt HTTPS</li>
-              </ul>
-              <ul class="badges" aria-label="Built with">
-                <li class="badge b-react">React</li>
-                <li class="badge b-typescript">TypeScript</li>
-                <li class="badge b-node">Node.js</li>
-                <li class="badge b-express">Express</li>
-                <li class="badge b-sqlite">SQLite</li>
-                <li class="badge b-leaflet">Leaflet</li>
-              </ul>
-              <div class="project__links">
-                <a class="link-btn" href="https://jobfinderangeles.site/" target="_blank" rel="noopener">Live site <svg class="icon" aria-hidden="true"><use href="#i-arrow-ne"/></svg></a>
-                <a class="link-btn" href="https://github.com/gbmagat/JOBFINDER-THESIS" target="_blank" rel="noopener">Source <svg class="icon" aria-hidden="true"><use href="#i-arrow-ne"/></svg></a>
-                <button class="link-btn link-btn--strong" type="button" data-open="case-jobfinder">Case study <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></button>
+              <div class="project__intro">
+                <p class="project__kicker"><span class="tag">Featured</span> Undergraduate thesis · 2026</p>
+                <h3 class="project__title">JobFinder</h3>
+                <p class="project__subtitle">Job matching for Angeles City, ranked by real road distance.</p>
+                <p class="project__desc">A full-stack platform for job seekers, employers, and PESO administrators that pairs ontology-based skill matching with shortest-path routing on the city's road network.</p>
+                <div class="project__links">
+                  <a class="link-btn" href="https://jobfinderangeles.site/" target="_blank" rel="noopener">Live site <svg class="icon" aria-hidden="true"><use href="#i-arrow-ne"/></svg></a>
+                  <a class="link-btn" href="https://github.com/gbmagat/JOBFINDER-THESIS" target="_blank" rel="noopener">Source <svg class="icon" aria-hidden="true"><use href="#i-arrow-ne"/></svg></a>
+                  <button class="link-btn link-btn--strong" type="button" data-open="case-jobfinder">Case study <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></button>
+                </div>
+              </div>
+              <div class="project__detail">
+                <ul class="points">
+                  <li>Dijkstra's algorithm written from scratch with a custom binary min-heap over an <b>8,282-node</b> OpenStreetMap road graph</li>
+                  <li>Zod validation, Helmet security headers, rate limiting, and scrypt password hashing</li>
+                  <li>Runs on a Linux VPS with nginx, systemd, and auto-renewing Let's Encrypt HTTPS</li>
+                </ul>
+                <ul class="badges" aria-label="Built with">
+                  <li class="badge b-react">React</li>
+                  <li class="badge b-typescript">TypeScript</li>
+                  <li class="badge b-node">Node.js</li>
+                  <li class="badge b-express">Express</li>
+                  <li class="badge b-sqlite">SQLite</li>
+                  <li class="badge b-leaflet">Leaflet</li>
+                </ul>
               </div>
             </div>
           </article>
 
           <!-- Our Places -->
           <article class="project" id="our-places" data-reveal>
-            <button class="project__media browser" type="button" data-open="case-ourplaces" aria-label="Open the Our Places case study">
-              <span class="browser__bar" aria-hidden="true">
-                <span class="dots"><i></i><i></i><i></i></span>
-                <span class="browser__url"><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg>ourplaces.igst.site</span>
-              </span>
-              <img class="browser__shot" src="assets/img/projects/ourplaces-feed-1280.webp" srcset="assets/img/projects/ourplaces-feed-640.webp 640w, assets/img/projects/ourplaces-feed-1280.webp 1280w" sizes="(min-width: 960px) 620px, 100vw" width="1280" height="800" loading="lazy" decoding="async" alt="Our Places feed page with shared stories, filters, and the next planned place.">
-            </button>
+            <div class="project__media browser" data-shots>
+              <div class="browser__bar">
+                <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                <div class="browser__tabs" role="group" aria-label="Our Places screenshots">
+                  <button class="browser__tab" type="button" aria-pressed="true">Feed</button>
+                  <button class="browser__tab" type="button" aria-pressed="false" data-src="assets/img/projects/ourplaces-map-1280.webp" data-srcset="assets/img/projects/ourplaces-map-640.webp 640w, assets/img/projects/ourplaces-map-1280.webp 1280w">Map</button>
+                </div>
+                <span class="browser__url" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg>ourplaces.igst.site</span>
+              </div>
+              <button class="browser__view" type="button" data-open="case-ourplaces" aria-label="Open the Our Places case study">
+                <img class="browser__shot is-active" src="assets/img/projects/ourplaces-feed-1280.webp" srcset="assets/img/projects/ourplaces-feed-640.webp 640w, assets/img/projects/ourplaces-feed-1280.webp 1280w" sizes="(min-width: 960px) 660px, calc(100vw - 36px)" width="1280" height="800" loading="lazy" decoding="async" alt="Our Places feed page with shared stories, filters, and the next planned place.">
+                <span class="browser__cta" aria-hidden="true">Case study <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
+              </button>
+            </div>
             <div class="project__body">
               <p class="project__kicker">Course final project · 2026</p>
               <h3 class="project__title">Our Places</h3>
@@ -522,13 +597,19 @@
 
           <!-- It's a Match -->
           <article class="project" id="its-a-match" data-reveal>
-            <button class="project__media browser" type="button" data-open="case-itsamatch" aria-label="Open the It's a Match case study">
-              <span class="browser__bar" aria-hidden="true">
-                <span class="dots"><i></i><i></i><i></i></span>
-                <span class="browser__url"><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg>itsamatch.online</span>
-              </span>
-              <img class="browser__shot" src="assets/img/projects/itsamatch-home-1280.webp" srcset="assets/img/projects/itsamatch-home-640.webp 640w, assets/img/projects/itsamatch-home-1280.webp 1280w" sizes="(min-width: 960px) 620px, 100vw" width="1280" height="800" loading="lazy" decoding="async" alt="It's a Match landing page with the headline “it's a match! you're my missing puzzle piece”.">
-            </button>
+            <div class="project__media browser">
+              <div class="browser__bar">
+                <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                <div class="browser__tabs" aria-hidden="true">
+                  <span class="browser__tab" aria-current="true">Home</span>
+                </div>
+                <span class="browser__url" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg>itsamatch.online</span>
+              </div>
+              <button class="browser__view" type="button" data-open="case-itsamatch" aria-label="Open the It's a Match case study">
+                <img class="browser__shot is-active" src="assets/img/projects/itsamatch-home-1280.webp" srcset="assets/img/projects/itsamatch-home-640.webp 640w, assets/img/projects/itsamatch-home-1280.webp 1280w" sizes="(min-width: 960px) 660px, calc(100vw - 36px)" width="1280" height="800" loading="lazy" decoding="async" alt="It's a Match landing page with the headline “it's a match! you're my missing puzzle piece”.">
+                <span class="browser__cta" aria-hidden="true">Case study <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
+              </button>
+            </div>
             <div class="project__body">
               <p class="project__kicker">Research simulation platform · Full-stack developer</p>
               <h3 class="project__title">It's a Match</h3>
@@ -557,13 +638,20 @@
 
           <!-- MOPAC -->
           <article class="project" id="mopac" data-reveal>
-            <button class="project__media browser" type="button" data-open="case-mopac" aria-label="Open the MOPAC case study">
-              <span class="browser__bar" aria-hidden="true">
-                <span class="dots"><i></i><i></i><i></i></span>
-                <span class="browser__url"><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg>gbmagat.github.io/MOPAC</span>
-              </span>
-              <img class="browser__shot" src="assets/img/projects/mopac-exhibitions-1280.webp" srcset="assets/img/projects/mopac-exhibitions-640.webp 640w, assets/img/projects/mopac-exhibitions-1280.webp 1280w" sizes="(min-width: 960px) 620px, 100vw" width="1280" height="800" loading="lazy" decoding="async" alt="MOPAC Exhibitions page showing a gallery hallway lined with framed paintings.">
-            </button>
+            <div class="project__media browser" data-shots>
+              <div class="browser__bar">
+                <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                <div class="browser__tabs" role="group" aria-label="MOPAC screenshots">
+                  <button class="browser__tab" type="button" aria-pressed="true">Exhibitions</button>
+                  <button class="browser__tab" type="button" aria-pressed="false" data-src="assets/img/projects/mopac-highlights-1280.webp" data-srcset="assets/img/projects/mopac-highlights-640.webp 640w, assets/img/projects/mopac-highlights-1280.webp 1280w">Highlights</button>
+                </div>
+                <span class="browser__url" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg>gbmagat.github.io/MOPAC</span>
+              </div>
+              <button class="browser__view" type="button" data-open="case-mopac" aria-label="Open the MOPAC case study">
+                <img class="browser__shot is-active" src="assets/img/projects/mopac-exhibitions-1280.webp" srcset="assets/img/projects/mopac-exhibitions-640.webp 640w, assets/img/projects/mopac-exhibitions-1280.webp 1280w" sizes="(min-width: 960px) 660px, calc(100vw - 36px)" width="1280" height="800" loading="lazy" decoding="async" alt="MOPAC Exhibitions page showing a gallery hallway lined with framed paintings.">
+                <span class="browser__cta" aria-hidden="true">Case study <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
+              </button>
+            </div>
             <div class="project__body">
               <p class="project__kicker">Academic final project · 2024</p>
               <h3 class="project__title">MOPAC</h3>
@@ -703,7 +791,7 @@
             <div class="contact__text">
               <p class="eyebrow">Contact</p>
               <h2 id="contact-title">Let's connect.</h2>
-              <p>Have a project, an opportunity, or a question? My inbox is open — I'm always happy to talk about web development, deployment, and cloud computing.</p>
+              <p>I'm looking for an OJT / internship placement (486 hours), and I'm open to freelance web projects. Have an opportunity, a project, or a question? My inbox is open.</p>
               <div class="contact__actions">
                 <a class="btn btn--primary" href="mailto:gabrielmagatjr.cs@gmail.com"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg> Email me</a>
                 <button class="btn btn--butter" type="button" data-chat-open><svg class="icon" aria-hidden="true"><use href="#i-chat"/></svg> Chat with me</button>
